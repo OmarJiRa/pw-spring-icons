@@ -9,5 +9,5 @@ import pe.edu.upc.icons.models.entities.Post;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, Integer> {
-	List<Post> findByNombre(String nombre) throws Exception;
+	List<Post> findByNombreContaining(String nombre) throws Exception;
 }

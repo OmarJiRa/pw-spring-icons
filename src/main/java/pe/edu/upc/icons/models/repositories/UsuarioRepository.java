@@ -10,7 +10,7 @@ import pe.edu.upc.icons.models.entities.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
-	List<Usuario> findByNombresApellidos(String nombresApellidos) throws Exception;
+	List<Usuario> findByNombresApellidosContaining(String nombresApellidos) throws Exception;
 	Optional<Usuario> findByEmail(String email) throws Exception;
 	Optional<Usuario> findByNumeroDocumento(String numeroDocumento) throws Exception;
 }

@@ -10,7 +10,7 @@ import pe.edu.upc.icons.models.entities.Creador;
 
 @Repository
 public interface CreadorRepository extends JpaRepository<Creador, Integer> {
-	List<Creador> findByNombresApellidos(String nombresApellidos) throws Exception;
+	List<Creador> findByNombresApellidosContaining(String nombresApellidos) throws Exception;
 	Optional<Creador> findByEmail(String email) throws Exception;
 	Optional<Creador> findByNumeroDocumento(String numeroDocumento) throws Exception;
 }

@@ -9,5 +9,6 @@ import pe.edu.upc.icons.models.entities.Categoria;
 
 @Repository
 public interface CategoriaRepository extends JpaRepository<Categoria, Integer> {
-	List<Categoria> findByNombre(String nombre) throws Exception;
+	
+	List<Categoria> findByNombreLike(String nombre) throws Exception;
 }
