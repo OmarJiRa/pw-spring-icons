@@ -1,11 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-<<<<<<< HEAD
     url: jdbc:postgresql://localhost:5432/pruebadb
-=======
-    url: jdbc:postgresql://localhost:5432/iconosdb
->>>>>>> b2eaa123391bcccb98a6c153b601ec77da9a443a
     username: postgres
     password: toni2001
   jpa:
