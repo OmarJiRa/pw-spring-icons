@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/marketdb
+    url: jdbc:postgresql://localhost:5432/iconosdb
     username: postgres
     password: toni2001
   jpa:
