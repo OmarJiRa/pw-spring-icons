@@ -41,6 +41,9 @@ public class Usuario {
     
     @OneToMany(mappedBy = "usuario")
     private List<UsuarioPost> usuarioPosts;
+    
+	@OneToMany(mappedBy = "usuario")
+	private List<Comentarios> comentarioUsuarios;
 
 	public Integer getId() {
 		return id;
@@ -114,5 +117,12 @@ public class Usuario {
 		this.numeroDocumento = numeroDocumento;
 	}
 	
-    
+	public List<Comentarios> getComentarios() {
+		return comentarioUsuarios;
+	}
+
+	public void setComentarios(List<Comentarios> comentarioUsuarios) {
+		this.comentarioUsuarios = comentarioUsuarios;
+	}
+	
 }
