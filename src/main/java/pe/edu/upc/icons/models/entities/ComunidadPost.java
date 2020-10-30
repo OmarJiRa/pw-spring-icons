@@ -14,29 +14,26 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "comunidades")
-public class Comunidad {
+@Table(name = "comunidad_post")
+public class ComunidadPost {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@Column(name = "nombre", length = 50, nullable = false)
 	private String nombre;
 	
 	@Column(name = "descripcion", length = 200, nullable = false)
 	private String descripcion;
 	
-	@Column(name = "tema", length = 50, nullable = false)
-	private String tema;
+	@Column(name = "creador", length = 30, nullable = false)
+	private String creador;
 	
 	@Column(name = "fecha_creacion", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date fechaCreacion;
 	
-	@OneToMany(mappedBy = "comunidad")
-	private List<ComunidadUsuario> comunidadUsuarios;
-
 	public Integer getId() {
 		return id;
 	}
@@ -61,12 +58,12 @@ public class Comunidad {
 		this.descripcion = descripcion;
 	}
 
-	public String getTema() {
-		return tema;
+	public String getCreador() {
+		return creador;
 	}
 
-	public void setTema(String tema) {
-		this.tema = tema;
+	public void setCreador(String creador) {
+		this.creador = creador;
 	}
 
 	public Date getFechaCreacion() {
@@ -84,5 +81,8 @@ public class Comunidad {
 	public void setComunidadUsuarios(List<ComunidadUsuario> comunidadUsuarios) {
 		this.comunidadUsuarios = comunidadUsuarios;
 	}
-	
+
+	@OneToMany(mappedBy = "comunidad")
+	private List<ComunidadUsuario> comunidadUsuarios;
+
 }
