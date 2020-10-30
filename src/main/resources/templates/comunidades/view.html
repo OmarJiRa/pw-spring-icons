@@ -35,6 +35,50 @@
 	
 	<span th:text="'Te uniste a la comunidad ' + ${comunidad.nombre} + ', ahora podras registar publicaciones '"></span>
 	
+	<h1>Publicaciones de las Comunidades</h1>
+	
+	 <table class="table table-striped">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">Nombre</th>
+	      <th scope="col">Descripcion</th>
+	      <th scope="col">Creador</th>
+	      <th scope="col">Fecha Creacion</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr th:each="comunidadPost : ${publicaciones}">
+	      <th th:text="${comunidadPost.id}" scope="row">.</th>
+	      <td> <a th:href="@{'/publicaciones/view-' + ${comunidadPost.id}}" th:text="${comunidadPost.nombre}">.</a> </td>
+	      <td th:text="${comunidadPost.descripcion}"></td>
+	      <td th:text="${comunidadPost.creador}"></td>
+	      <td th:text="${comunidadPost.fechaCreacion}"></td>     
+	      <td> <a th:href="@{'/publicaciones/view-' + ${comunidadPost.id}}"> </a> </td>
+	    </tr>
+	  </tbody>
+	</table>
+
+	<!-- Crear un formulario, ingresar data y enviarlo al controller -->
+	<span th:text="'Registrar Publicacion: '"></span>
+	<form th:action="@{/publicaciones/save}" th:object="${comunidadPost}" method="post">
+	  <div class="row">
+	    <div class="col">
+	      <input type="text" class="form-control" th:field="*{nombre}" placeholder="Nombre">
+	    </div>
+	    <div class="col">
+	      <input type="text" class="form-control" th:field="*{descripcion}" placeholder="Descripcion">
+	    </div>
+	    <div class="col">
+	      <input type="text" class="form-control" th:field="*{creador}" placeholder="Creador">
+	    </div>
+	    <div class="col">
+	      <input type="text" class="form-control" th:field="*{fechaCreacion}" placeholder="Fecha Creacion">
+	    </div>
+	  </div>
+	  <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Registar</button>
+	</form>
+	
 	<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
     <script th:src="@{/js/bootstrap..min.js}"></script>
 </body>
