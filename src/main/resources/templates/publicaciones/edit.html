@@ -8,7 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
     <link rel="stylesheet" th:href="@{/css/solid.min.css}">
     <link rel="stylesheet" th:href="@{/css/market.css}">
-    <title>Publicaciones </title>
+    <title>Actualización de datos </title>
   </head>
   <body>
   	
@@ -34,39 +34,10 @@
 	    </ul>
 	  </div>
 	</nav>
-
-	<h1 >BIENVENIDO A LA COMUNIDAD </h1>
-
-	<h1>Publicaciones de las Comunidades</h1>
-	 
-	 <table class="table table-striped">
-	  <thead>
-	    <tr>
-	      <th scope="col">#</th>
-	      <th scope="col">Nombre de la publicación</th>
-	      <th scope="col">Descripción</th>
-	      <th scope="col">Creador</th>
-	      <th scope="col">Fecha Creación</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	    <tr th:each="comunidadPost : ${publicaciones}">
-	      <th th:text="${comunidadPost.id}" scope="row">.</th>
-	      <td th:text="${comunidadPost.nombre}"></td>
-	      <td th:text="${comunidadPost.descripcion}"></td>
-	      <td th:text="${comunidadPost.creador}"></td>
-	      <td th:text="${comunidadPost.fechaCreacion}"></td>     
-	      <td> <a th:href="@{'/publicaciones/view-' + ${comunidadPost.id}}"> </a> </td>
-	      </td>
-	      <a th:href="@{/publicaciones/editar/}+${comunidadPost.id}" class="btn btn-warning"><i class="fas fa-edit"></i>Editar</a>
-	      <a th:href="@{/publicaciones/eliminar/}+${comunidadPost.id}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Eliminar</a>
-	    </tr> 
-	  </tbody>
-	</table>
-
-	<!-- Crear un formulario, ingresar data y enviarlo al controller -->
-	<span th:text="'Registrar Publicacion: '"></span>
-	<form th:action="@{/publicaciones/save}" th:object="${comunidadPost}" method="post">
+	
+	<!-- Creamos el formulario, actualizamos la data y enviarlo al controller -->
+	<span th:text="'Actualizar datos: '"></span>
+	<form th:action="@{/publicaciones}" th:object="${comunidadPost}" method="post">
 	  <div class="row">
 	    <div class="col">
 	      <input type="text" class="form-control" th:field="*{nombre}" placeholder="Nombre">
@@ -81,11 +52,11 @@
 	      <input type="text" class="form-control" th:field="*{fechaCreacion}" placeholder="Fecha Creacion">
 	    </div>
 	  </div>
-	  <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Registar</button>
+	  <!--<button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Guardar</button> -->
+	  <a th:href="@{/publicaciones}" class="btn btn-success"><i class="fas fa-save"></i>Actualizar</a>
 	</form>
-    
-    
-    <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+	
+	<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
     <script th:src="@{/js/bootstrap..min.js}"></script>
   </body>
 </html>
