@@ -53,7 +53,7 @@ public class ComentariosServiceImpl implements ComentariosService, Serializable{
 	@Transactional(readOnly = true)
 	@Override
 	public List<Comentarios> findByNombre(String nombre) throws Exception {
-		return comentarioRepository.findById(nombre);
+		return comentarioRepository.findByNombreLike(nombre);
 	}
 
 }
