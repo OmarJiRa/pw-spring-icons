@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pe.edu.upc.icons.models.entities.Comentarios;
 import pe.edu.upc.icons.models.repositories.ComentariosRepository;
 import pe.edu.upc.icons.services.ComentariosService;
 
+@Service
 public class ComentariosServiceImpl implements ComentariosService, Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -51,7 +53,7 @@ public class ComentariosServiceImpl implements ComentariosService, Serializable{
 	@Transactional(readOnly = true)
 	@Override
 	public List<Comentarios> findByNombre(String nombre) throws Exception {
-		return comentarioRepository.findByNombreLike(nombre);
+		return comentarioRepository.findByNombre(nombre);
 	}
 
 }
