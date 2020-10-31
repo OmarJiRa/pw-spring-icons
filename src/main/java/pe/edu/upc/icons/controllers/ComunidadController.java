@@ -74,7 +74,7 @@ public class ComunidadController {
 		}
 		return "redirect:/publicaciones";
 	}
-	
+/*	
 //  /publicaciones/edit
 	@GetMapping("/editar/{id}")
 	public String editar(@PathVariable("id") Integer id,  Model model) {
@@ -99,24 +99,24 @@ public class ComunidadController {
 		Optional<ComunidadPost>comunidadPostService
 	}*/
 	
-	
+
 	
    //  /publicaciones/delete
 	@GetMapping("/eliminar/{id}")
 	public String delete(@PathVariable("id") Integer id,  Model model) {
 		try {
-			Optional<ComunidadPost> optional = comunidadPostService.findById(id);
+			Optional<Comunidad> optional = comunidadService.findById(id);
 			if( optional.isPresent() ) {
-				comunidadPostService.deleteById(id);
+				comunidadService.deleteById(id);
 			}
 			else {
-				return "redirect:/publicaciones";
+				return "redirect:/comunidades";
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		//Devuelve la URL mapping
-		return "redirect:/publicaciones";
+		return "redirect:/comunidades";
 	}
 }
