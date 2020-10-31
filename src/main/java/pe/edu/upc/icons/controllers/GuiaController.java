@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/GuiaUsuario")
+@RequestMapping("/guiausuario")
 public class GuiaController {
 	
 	@GetMapping
 	public String GuiaUsuario() {
-		return "/GuiaUsuario/inicio";
+		return "GuiaUsuario";
 	}
 
 }

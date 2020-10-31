@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es"
+	xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+    <link rel="stylesheet" th:href="@{/css/solid.min.css}">
+    <link rel="stylesheet" th:href="@{/css/market.css}">
+    
+    <title>Distritos</title>
+  </head>
+  <body>
+  
+  	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" href="#">Navbar</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+	    <ul class="navbar-nav">
+	      <li class="nav-item active">
+	        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Features</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Pricing</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+  
+  
+    <h1>Distrito </h1>
+    
+    <table class="table table-striped">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">Nombre</th>
+	      <th scope="col">Provincia</th>
+	      <th scope="col"></th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr th:each="distrito : ${distritos}">
+	      <th th:text="${distrito.id}" scope="row">.</th>
+	      <td> <a th:href="@{'/distritos/view-' + ${distrito.id}}" th:text="${distrito.nombre}">.</a> </td>
+	      <td th:text="${distrito.provincia}"></td>	      
+	      <td></td>
+	    </tr>
+	  </tbody>
+	</table>
+	
+	<!-- unorder list -->
+	<ul th:each="distrito : ${distritos}">
+		<li> 
+			<a th:href="@{'/distritos/view-' + ${distrito.id}}">
+				<img alt="imagen" th:src="@{/images/twitter-icon.png}">
+			</a>  
+			<a th:href="@{'/distritos/view-' + ${distrito.id}}" th:text="${distrito.nombre}">.</a>
+		</li>
+	</ul>	
+	
+	<!-- Crear un formulario, ingresar data y enviarlo al Controller -->
+	<form th:action="@{/distritos/save}" th:object="${distrito}" method="post">
+	  <div class="row">
+	    <div class="col">
+	      <input type="text" class="form-control" th:field="*{nombre}" placeholder="Nombre">
+	    </div>
+	    <div class="col">
+	      <input type="text" class="form-control" th:field="*{Provincia}" placeholder="Provincia">
+	    </div>
+	  </div>
+	  <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Grabar</button>
+	</form>
+    
+
+    <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap..min.js}"></script>
+  </body>
+</html>
