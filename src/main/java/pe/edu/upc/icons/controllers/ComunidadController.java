@@ -75,4 +75,39 @@ public class ComunidadController {
 		return "redirect:/publicaciones";
 	}
 	
+	//  /publicaciones/delete
+	@GetMapping("/eliminar/{id}")
+	public String delete(@PathVariable("id") Integer id, Model model) {
+		try {
+			Optional<Comunidad> optional = comunidadService.findById(id);
+			if (optional.isPresent()) {
+				comunidadService.deleteById(id);
+			} else {
+				return "redirect:/comunidades";
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// Devuelve la URL mapping
+		return "redirect:/comunidades";
+	}
+/*
+	@GetMapping("/editar/{id}")
+	public String editar(@PathVariable("id") Integer id, Model model) {
+		try {
+			Optional<ComunidadPost> optional = comunidadPostService.findById(id);
+			if (optional.isPresent()) {
+				model.addAttribute("comunidadPost", optional.get());
+			} else {
+				return "redirect:/publicaciones/edit";
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// Devuelve la URL mapping
+		return "/publicaciones/edit";
+	}
+*/
 }

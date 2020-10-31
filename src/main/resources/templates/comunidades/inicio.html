@@ -45,7 +45,8 @@
 	      <th scope="col">Descripcion</th>
 	      <th scope="col">Tema</th>
 	      <th scope="col">Fecha Creacion</th>
-	      <th scope="col">Unete a la comunidad</th>
+	      <th scope="col">Unete a la Comunidad</th>
+	      <th scope="col">Eliminar Comunidad</th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -59,6 +60,7 @@
 				<img alt="imagen" th:src="@{/images/join_us.png}">
 			</a>  
 			</td>
+		<td><a th:href="@{/comunidades/eliminar/}+${comunidad.id}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Eliminar</a></td>
 	    </tr>
 	  </tbody>
 	</table>
