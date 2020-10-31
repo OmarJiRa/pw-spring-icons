@@ -50,9 +50,10 @@ public class ComunidadPostServiceImpl implements ComunidadPostService, Serializa
 		return comunidadPostRepository.findAll();
 	}
 
-	@Transactional(readOnly = true)
 	@Override
-	public List<ComunidadPost> findByNombre(String nombre) throws Exception {
-		return comunidadPostRepository.findByNombreLike(nombre);
+	public List<ComunidadPost> findByComunidad(Integer comunidad_id) throws Exception {
+		
+		return comunidadPostRepository.findByComunidad(comunidad_id);
 	}
+
 }

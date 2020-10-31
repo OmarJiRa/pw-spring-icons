@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="medio_pago")
@@ -22,6 +23,9 @@ public class MedioPago {
 	
 	@Column(name="tipo", length = 20, nullable = false)
 	private String tipo;
+	
+	@Transient
+	private Integer usuarioId;
 	
 	@Column(name = "numero", length = 16, nullable = false)
 	private String numero;
@@ -57,5 +61,14 @@ public class MedioPago {
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
+
+	public Integer getUsuarioId() {
+		return usuarioId;
+	}
+
+	public void setUsuarioId(Integer usuarioId) {
+		this.usuarioId = usuarioId;
+	}
+	
 	
 }

@@ -36,6 +36,17 @@ public class Comunidad {
 	
 	@OneToMany(mappedBy = "comunidad")
 	private List<ComunidadUsuario> comunidadUsuarios;
+	
+	@OneToMany(mappedBy = "comunidad")
+	private List<ComunidadPost> comunidadPosts;
+
+	public List<ComunidadPost> getComunidadPosts() {
+		return comunidadPosts;
+	}
+
+	public void setComunidadPosts(List<ComunidadPost> comunidadPosts) {
+		this.comunidadPosts = comunidadPosts;
+	}
 
 	public Integer getId() {
 		return id;

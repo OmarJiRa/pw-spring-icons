@@ -1,14 +1,14 @@
 package pe.edu.upc.icons.models.entities;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -33,6 +33,10 @@ public class ComunidadPost {
 	@Column(name = "fecha_creacion", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date fechaCreacion;
+	
+	@ManyToOne
+	@JoinColumn(name = "comunidad_id")
+	private Comunidad comunidad;
 	
 	public Integer getId() {
 		return id;
@@ -73,16 +77,5 @@ public class ComunidadPost {
 	public void setFechaCreacion(Date fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
 	}
-
-	public List<ComunidadUsuario> getComunidadUsuarios() {
-		return comunidadUsuarios;
-	}
-
-	public void setComunidadUsuarios(List<ComunidadUsuario> comunidadUsuarios) {
-		this.comunidadUsuarios = comunidadUsuarios;
-	}
-
-	@OneToMany(mappedBy = "comunidad")
-	private List<ComunidadUsuario> comunidadUsuarios;
-
+	
 }

@@ -14,62 +14,66 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import pe.edu.upc.icons.models.entities.Comunidad;
-import pe.edu.upc.icons.services.ComunidadService;
+import pe.edu.upc.icons.models.entities.MedioPago;
+import pe.edu.upc.icons.models.entities.Usuario;
+import pe.edu.upc.icons.services.MedioPagoService;
+import pe.edu.upc.icons.services.UsuarioService;
 
 @Controller
-@RequestMapping("/comunidades")
-@SessionAttributes("comunidad")
-public class ComunidadController {
+@RequestMapping("/medios")
+@SessionAttributes("medio")
+public class MedioPagoController {
+
+	@Autowired
+	private MedioPagoService medioPagoService;
 	
 	@Autowired
-	private ComunidadService comunidadService;
-	
-	//Para obtener data de la BD y enviarlo al Front
+	private UsuarioService usuarioService;
+		
 	@GetMapping
 	public String inicio(Model model) {
-		Comunidad comunidad = new Comunidad();
+		
+		MedioPago medioPago = new MedioPago();
 		
 		try {
-			List<Comunidad> comunidades = comunidadService.findAll();
-			model.addAttribute("comunidades", comunidades);
-			//Enviando el objeto comunidad para el nuevo elemento
-			model.addAttribute("comunidad", comunidad);
+			List<MedioPago> mediosPago = medioPagoService.findAll();
+			model.addAttribute("medio", medioPago);
+			model.addAttribute("medios", mediosPago); 
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
-		// Devuelve el nombre del archivo HTML
-		return "/comunidades/inicio";
+		return "/medios/inicio";
 	}
 	
-	//  /comunidades/save
+	
+	
 	@PostMapping("save")
-	public String save(@ModelAttribute("comunidad") Comunidad comunidad, SessionStatus status ) {
+	public String save(@ModelAttribute("medio") MedioPago medio, SessionStatus status) {
 		try {
-			comunidadService.save(comunidad);
+			Optional<Usuario> usuario = usuarioService.findById(3);
+			medio.setUsuario(usuario.get());
+			medioPagoService.save(medio);
 			status.setComplete();
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
-		//Devuelve la URL mapping
-		return "redirect:/comunidades";
+		return "redirect:/medios";
 	}
 	
 	@GetMapping("view-{id}")
 	public String view(@PathVariable("id") Integer id, Model model) {
 		try {
-			Optional<Comunidad> optional = comunidadService.findById(id);
+			Optional<MedioPago> optional = medioPagoService.findById(id);
 			if(optional.isPresent()) {
-				model.addAttribute("comunidad", optional.get());
-				return "comunidades/view";
-			}
+				model.addAttribute("medio", optional.get());
+				return "medios/view";
+			} 
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
-		return "redirect:/comunidades";
+		return "redirect:/medios";		
 	}
-	
 }
