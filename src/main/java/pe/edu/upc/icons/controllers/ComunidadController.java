@@ -74,17 +74,10 @@ public class ComunidadController {
 		}
 		return "redirect:/publicaciones";
 	}
-<<<<<<< HEAD
-/*	
-//  /publicaciones/edit
-	@GetMapping("/editar/{id}")
-	public String editar(@PathVariable("id") Integer id,  Model model) {
-=======
-	
-	//  /publicaciones/delete
+
+	// /publicaciones/delete
 	@GetMapping("/eliminar/{id}")
 	public String delete(@PathVariable("id") Integer id, Model model) {
->>>>>>> 9f3d217428914c63538ea9b52574d36030ea6914
 		try {
 			Optional<Comunidad> optional = comunidadService.findById(id);
 			if (optional.isPresent()) {
@@ -96,51 +89,10 @@ public class ComunidadController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		// Devuelve la URL mapping
-		return "redirect:/comunidades";
-	}
-<<<<<<< HEAD
-	
-	/*@GetMapping("/editar/{id}")
-	public String editar(@PathVariable int id, Model model) {
-		Optional<ComunidadPost>comunidadPostService
-	}*/
-	
 
-	
-   //  /publicaciones/delete
-	@GetMapping("/eliminar/{id}")
-	public String delete(@PathVariable("id") Integer id,  Model model) {
-		try {
-			Optional<Comunidad> optional = comunidadService.findById(id);
-			if( optional.isPresent() ) {
-				comunidadService.deleteById(id);
-			}
-			else {
-				return "redirect:/comunidades";
-=======
-/*
-	@GetMapping("/editar/{id}")
-	public String editar(@PathVariable("id") Integer id, Model model) {
-		try {
-			Optional<ComunidadPost> optional = comunidadPostService.findById(id);
-			if (optional.isPresent()) {
-				model.addAttribute("comunidadPost", optional.get());
-			} else {
-				return "redirect:/publicaciones/edit";
->>>>>>> 9f3d217428914c63538ea9b52574d36030ea6914
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-<<<<<<< HEAD
-		//Devuelve la URL mapping
-		return "redirect:/comunidades";
-=======
 		// Devuelve la URL mapping
-		return "/publicaciones/edit";
->>>>>>> 9f3d217428914c63538ea9b52574d36030ea6914
+		return "redirect:/comunidades";
+
 	}
-*/
+
 }
