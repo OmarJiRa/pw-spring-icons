@@ -49,17 +49,4 @@ public class ComentariosServiceImpl implements ComentariosService, Serializable{
 	public List<Comentarios> findAll() throws Exception {
 		return comentarioRepository.findAll();
 	}
-
-	@Override
-	public List<Comentarios> findByNombre(String nombre) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	//@Transactional(readOnly = true)
-	//@Override
-	//public List<Comentarios> findByNombre(String nombre) throws Exception {
-	//	return comentarioRepository.findByNombreLike(nombre);
-	//}
-
 }

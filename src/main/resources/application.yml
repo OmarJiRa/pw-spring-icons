@@ -1,7 +1,11 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
+<<<<<<< HEAD
     url: jdbc:postgresql://localhost:5432/iconsdb
+=======
+    url: jdbc:postgresql://localhost:5432/iconosdb
+>>>>>>> 2d45f0f4288a82084695a3ea1835c2c83ac57b07
     username: postgres
     password: postgres
   jpa:
