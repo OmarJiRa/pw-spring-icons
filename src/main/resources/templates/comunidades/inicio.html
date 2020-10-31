@@ -51,7 +51,7 @@
 	  <tbody>
 	    <tr th:each="comunidad : ${comunidades}">
 	      <th th:text="${comunidad.id}" scope="row">.</th>
-	      <td th:href="${comunidad.nombre}"></td>
+	      <td th:text="${comunidad.nombre}"></td>
 	      <td th:text="${comunidad.descripcion}"></td>
 	      <td th:text="${comunidad.tema}"></td>
 	      <td th:text="${comunidad.fechaCreacion}"></td>     
