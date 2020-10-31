@@ -10,6 +10,6 @@ import pe.edu.upc.icons.models.entities.Comentarios;
 @Repository
 public interface ComentariosRepository extends JpaRepository<Comentarios, Integer>{
 	
-	List<Comentarios> findByNombreLike(String nombre) throws Exception;
+	//List<Comentarios> findByNombreLike(String nombre) throws Exception;
 
 }
