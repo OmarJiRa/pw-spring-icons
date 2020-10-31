@@ -56,10 +56,11 @@
 	      <td th:text="${comunidadPost.descripcion}"></td>
 	      <td th:text="${comunidadPost.creador}"></td>
 	      <td th:text="${comunidadPost.fechaCreacion}"></td>     
-	      <td> <a th:href="@{'/publicaciones/view-' + ${comunidadPost.id}}"> </a>
+	      <td> <a th:href="@{'/publicaciones/view-' + ${comunidadPost.id}}"> </a> </td>
+	      <td>
 	      <a th:href="@{/publicaciones/editar/}+${comunidadPost.id}" class="btn btn-warning"><i class="fas fa-edit"></i>Editar</a>
 	      <a th:href="@{/publicaciones/eliminar/}+${comunidadPost.id}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Eliminar</a>
-	    </tr> 
+	    </tr>
 	  </tbody>
 	</table>
 
