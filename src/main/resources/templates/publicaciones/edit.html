@@ -35,8 +35,14 @@
 	  </div>
 	</nav>
 	
+	<h1 >BIENVENIDO A LA COMUNIDAD </h1>
+	
+	<div></div>
+
+	<h1>Actualización de datos</h1>
+	
 	<!-- Creamos el formulario, actualizamos la data y enviarlo al controller -->
-	<span th:text="'Actualizar datos: '"></span>
+	<span th:text="'Modifique los campos que desee: '"></span>
 	<form th:action="@{/publicaciones/save}" th:object="${comunidadPost}" method="post">
 	  <div class="row">
 	    <div class="col">
