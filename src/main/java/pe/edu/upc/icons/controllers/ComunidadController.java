@@ -94,5 +94,18 @@ public class ComunidadController {
 		return "redirect:/comunidades";
 
 	}
+	
+	@PostMapping("search")
+	public String search(@ModelAttribute("comunidad") Comunidad comunidad, Model model) {
+		model.addAttribute("comunidad", comunidad);
+		try {
+			List<Comunidad> comunidades = comunidadService.findByNombre(comunidad.getNombre());
+			model.addAttribute("comunidades", comunidades);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+		}
+		return "/comunidades/view";
+	}
 
 }

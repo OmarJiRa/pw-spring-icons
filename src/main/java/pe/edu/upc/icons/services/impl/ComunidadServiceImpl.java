@@ -53,7 +53,7 @@ public class ComunidadServiceImpl implements ComunidadService, Serializable {
 	@Transactional(readOnly = true)
 	@Override
 	public List<Comunidad> findByNombre(String nombre) throws Exception {
-		return comunidadRepository.findByNombreLike(nombre);
+		return comunidadRepository.findByNombreContaining(nombre);
 	}
 
 }
