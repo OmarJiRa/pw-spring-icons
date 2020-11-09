@@ -23,7 +23,7 @@
 			aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<form th:action="@{/comunidades/search}" th:object="${comunidad}"
+		<form th:action="@{/comunidades/search_tema}" th:object="${comunidad}"
 			method="post" class="form-inline my-2 my-lg-0">
 			<input th:field="*{tema}" class="form-control mr-sm-2" type="search"
 				placeholder="Buscar por tema">
@@ -72,7 +72,7 @@
 			Resultado de búsqueda: <span th:text="${comunidad.tema}"></span>
 		</h3>
 		<ul> 
-			<li th:each="comunidad : ${comunidad}">
+			<li th:each="comunidad : ${comunidades}">
 				<span th:text="${comunidad.tema}"></span> 
 				
 				<!-- </h5> <div class="card" style="width: 18rem;">
@@ -83,7 +83,7 @@
 				    <a href="#" class="card-link">Ver publicaciones de la comunidad</a>
 				  </div>
 				</div>-->
-				</li>
+			</li>
 		</ul>
 
 	</section>

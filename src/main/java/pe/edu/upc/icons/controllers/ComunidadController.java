@@ -95,11 +95,13 @@ public class ComunidadController {
 
 	}
 	
-	@PostMapping("search")
+	@PostMapping("search_tema")
 	public String search(@ModelAttribute("comunidad") Comunidad comunidad, Model model) {
 		model.addAttribute("comunidad", comunidad);
+		System.out.println(comunidad.getTema());
 		try {
-			List<Comunidad> comunidades = comunidadService.findByNombre(comunidad.getNombre());
+			List<Comunidad> comunidades = comunidadService.findByTema(comunidad.getTema());
+			//System.out.println(comunidades.size());
 			model.addAttribute("comunidades", comunidades);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -107,5 +109,7 @@ public class ComunidadController {
 		}
 		return "/comunidades/view";
 	}
+	
+	
 
 }
