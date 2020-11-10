@@ -9,5 +9,6 @@ import pe.edu.upc.icons.models.entities.ComunidadPost;
 
 @Repository
 public interface ComunidadPostRepository extends JpaRepository<ComunidadPost, Integer>{
-	List<ComunidadPost> findByNombreLike(String nombre) throws Exception;
+	List<ComunidadPost> findByNombreContaining(String nombre) throws Exception;
+	List<ComunidadPost> findByDescripcionContaining(String descripcion) throws Exception;
 }

@@ -109,7 +109,4 @@ public class ComunidadController {
 		}
 		return "/comunidades/view";
 	}
-	
-	
-
 }

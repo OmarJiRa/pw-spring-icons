@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import pe.edu.upc.icons.models.entities.Comunidad;
 import pe.edu.upc.icons.models.entities.ComunidadPost;
 import pe.edu.upc.icons.services.ComunidadPostService;
 
@@ -103,5 +104,20 @@ public class ComunidadPostController {
 		}
 		//Devuelve la URL mapping
 		return "redirect:/publicaciones";
+	}
+	
+	@PostMapping("search_descripcion")
+	public String search(@ModelAttribute("comunidadPost") ComunidadPost comunidadPost, Model model) {
+		model.addAttribute("comunidadPost", comunidadPost);
+		System.out.println(comunidadPost.getDescripcion());
+		try {
+			List<ComunidadPost> comunidadPosts = comunidadPostService.findByDescripcion(comunidadPost.getDescripcion());
+			//System.out.println(comunidadPosts.size());
+			model.addAttribute("comunidadPosts", comunidadPosts);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+		}
+		return "/publicaciones/viewp";
 	}
 }
