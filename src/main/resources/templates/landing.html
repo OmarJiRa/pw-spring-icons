@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Icons</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" th:href="@{/vendors/owl-carousel/css/owl.carousel.min.css}">
+  <link rel="stylesheet" th:href="@{/vendors/owl-carousel/css/owl.theme.default.css}">
+  <link rel="stylesheet" th:href="@{/vendors/mdi/css/materialdesignicons.min.css}">
+  <link rel="stylesheet" th:href="@{/vendors/aos/css/aos.css}">
+  <link rel="stylesheet" th:href="@{/css/style.min.css}">
+</head>
+
+<body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
+
+  <header id="header-section">
+    <nav class="navbar navbar-expand-lg pl-3 pl-sm-1 navbar-dark bg-dark" id="navbar">
+    <div class="container">
+      <div class="navbar-brand-wrapper d-flex w-100">
+        <img src="images/Frame 1.svg" width="150" height="60" alt="">
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="mdi mdi-menu navbar-toggler-icon"></span>
+        </button>
+
+      </div>
+      <div class="collapse navbar-collapse navbar-menu-wrapper" id="navbarSupportedContent">
+        <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
+          <li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
+            <div class="navbar-collapse-logo">
+              <img src="images/Frame 1.svg" width="120" height="60" alt="Icons">
+            </div>
+            <button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
+            </button>
+
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color:white" href="#header-section">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color:white" href="#features-section">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color:white" href="#digital-marketing-section">Servicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color:white" href="#feedback-section">Testimonios</a>
+          </li>
+          <li class="nav-item btn-contact-us pl-3 pl-lg-0">
+            <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Contacto</button>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+    </nav>
+  </header>
+
+  <div class="banner" >
+    <div class="container">
+    &nbsp;
+      <h1 class="font-weight-semibold"> La mejor plataforma para creadores <br> de contenido novatos </h1>
+      <h6 class="font-weight-normal text-muted pb-3">Únete y disfruta de una gran variedad de contenido apoyando a creadores.</h6>
+      <div> 
+        <button onclick="location.href='/index'" class="btn btn-opacity-light mr-1">Empezar</button>
+      </div>
+      <img src="images/Group171.svg" alt="" class="img-fluid">
+    </div>
+  </div>
+
+  <div class="content-wrapper">
+    <div class="container">
+
+      <section class="features-overview" id="features-section" >
+        <div class="content-header">
+          <h2>¿Cómo funciona Icons?</h2>
+          <h6 class="section-subtitle text-muted">Conoce las características que posee la plataforma y la conexión valiosa con el público.<br> Sé parte de nuestras comunidades.</h6>
+        </div>
+        <div class="d-md-flex justify-content-between">
+          <div class="grid-margin d-flex justify-content-start">
+            <div class="features-width">
+              <img src="images/Group12.svg" alt="" class="img-icons">
+              <h5 class="py-3">Contenido<br>único</h5>
+              <p class="text-muted">Recibe un contenido variado cada día. Únete ahora y sé parte de nuestra familia.   </p>
+              <!-- <a href="#"><p class="readmore-link">Readmore</p></a> -->
+            </div>
+          </div>
+          <div class="grid-margin d-flex justify-content-center">
+            <div class="features-width">
+              <img src="images/Group7.svg" alt="" class="img-icons">
+              <h5 class="py-3">Diversas <br>comunidades</h5>
+              <p class="text-muted">Un espacio para compartir y disfrutar ideas en común sobre un creador.</p>
+            <!--  <a href="#"><p class="readmore-link">Readmore</p></a>-->
+            </div>
+          </div>
+          <div class="grid-margin d-flex justify-content-end">
+            <div class="features-width">
+              <img src="images/Group5.svg" alt="" class="img-icons">
+              <h5 class="py-3">Contenido <br>exlusivo</h5>
+              <p class="text-muted">Visualiza más contenido de tu creador favorito al unirte a nuestro plan premium.</p>
+              <!-- <a href="#"><p class="readmore-link">Readmore</p></a> -->
+            </div>
+          </div>
+        </div>
+
+      </section>
+      <section class="digital-marketing-service" id="digital-marketing-section">
+        <div class="row align-items-center">
+          <div class="col-12 col-lg-7 grid-margin grid-margin-lg-0" data-aos="fade-right">
+            <h3 class="m-0">Interactua con las publicaciones <br>y conoce a más admiradores </h3>
+            <div class="col-lg-7 col-xl-6 p-0">
+              <p class="py-4 m-0 text-muted">En las comunidades podrás publicar, comentar, compartir el contenido que desees. </p>
+              <p class="font-weight-medium text-muted">Si quieres visualizar más contenido de creador, no olvides unirte al plan premium.</p>
+            </div>
+          </div>
+          <div class="col-12 col-lg-5 p-0 img-digital grid-margin grid-margin-lg-0" data-aos="fade-left">
+            <img src="images/Group1.png" alt="" class="img-fluid">
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-12 col-lg-7 text-center flex-item grid-margin" data-aos="fade-right">
+            <img src="images/Group2.png" alt="" class="img-fluid">
+          </div>
+          <div class="col-12 col-lg-5 flex-item grid-margin" data-aos="fade-left">
+            <h3 class="m-0">Mantente informado <br>del alcance de tu contenido.</h3>
+            <div class="col-lg-7 col-xl-8 p-0">
+              <p class="py-4 m-0 text-muted">Si eres un creador y no sabes determinar el alcance de tus publicaciones. Podrás revisar las estadísticas que generes en tu perfil.</p>
+              <p class="font-weight-medium text-muted">Personaliza el rango de fechas que desees visualizar.</p>
+            </div>
+            <!--<button class="btn btn-info">Readmore</button> -->
+          </div>
+        </div>
+
+      </section>
+
+      <section class="customer-feedback" id="feedback-section">
+        <div class="row">
+          <div class="col-12 text-center pb-5">
+            <h2>¿Qué dicen nuestos usuarios?</h2>
+            <h6 class="section-subtitle text-muted m-0">Esto es lo que piensan nuestros usu arios</h6>
+          </div>
+          <div class="owl-carousel owl-theme grid-margin">
+              <div class="card customer-cards">
+                <div class="card-body">
+                  <div class="text-center">
+                    <img src="images/face2.jpg" width="89" height="89" alt="" class="img-customer">
+                    <p class="m-0 py-3 text-muted">Icons me ayudó a hacerme notar en el mundo digital y a generar ingresos en la plataforma</p>
+                    <div class="content-divider m-auto"></div>
+                    <h6 class="card-title pt-3">Dina Martinez</h6>
+                    <h6 class="customer-designation text-muted m-0">Content Creator</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="card customer-cards">
+                <div class="card-body">
+                  <div class="text-center">
+                    <img src="images/face3.jpg" width="89" height="89" alt="" class="img-customer">
+                    <p class="m-0 py-3 text-muted">Icons me enseñó que lo más valioso que tenemos es la opinión de nuestros consumidores</p>
+                    <div class="content-divider m-auto"></div>
+                    <h6 class="card-title pt-3">Billie Armstrong</h6>
+                    <h6 class="customer-designation text-muted m-0">Content Creator</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="card customer-cards">
+                <div class="card-body">
+                  <div class="text-center">
+                    <img src="images/face20.jpg" width="89" height="89" alt="" class="img-customer">
+                    <p class="m-0 py-3 text-muted">Con Icons, fui capaz de hacerme notar en los espacios digitales. Gracias Icons!</p>
+                    <div class="content-divider m-auto"></div>
+                    <h6 class="card-title pt-3">Ashley Lambert</h6>
+                    <h6 class="customer-designation text-muted m-0">Musician</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="card customer-cards">
+                <div class="card-body">
+                  <div class="text-center">
+                    <img src="images/face15.jpg" width="89" height="89" alt="" class="img-customer">
+                    <p class="m-0 py-3 text-muted">La plataforma ayudó a que mi contenido llegue a más gente, a mucha más gente.</p>
+                    <div class="content-divider m-auto"></div>
+                    <h6 class="card-title pt-3">Cody Lee</h6>
+                    <h6 class="customer-designation text-muted m-0">Comic writer</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="card customer-cards">
+                <div class="card-body">
+                  <div class="text-center">
+                    <img src="images/face16.jpg" width="89" height="89" alt="" class="img-customer">
+                    <p class="m-0 py-3 text-muted">Gracias a Icons encontré un público que disfruta mi contenido y me apoya incondicionalmente.</p>
+                    <div class="content-divider m-auto"></div>
+                    <h6 class="card-title pt-3">Cody Lambert</h6>
+                    <h6 class="customer-designation text-muted m-0">Content Creator</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="card customer-cards">
+                <div class="card-body">
+                  <div class="text-center">
+                    <img src="images/face1.jpg" width="89" height="89" alt="" class="img-customer">
+                    <p class="m-0 py-3 text-muted">En Icons, descubrí a toda una comunidad que hablaba de mis producciones.</p>
+                    <div class="content-divider m-auto"></div>
+                    <h6 class="card-title pt-3">Tony Martinez</h6>
+                    <h6 class="customer-designation text-muted m-0">Content Creator</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="card customer-cards">
+                <div class="card-body">
+                  <div class="text-center">
+                    <img src="images/face2.jpg" width="89" height="89" alt="" class="img-customer">
+                    <p class="m-0 py-3 text-muted">Aprendí que los datos de performance de mis publicaciones tenían mucho que ver con mi crecimiento.</p>
+                    <div class="content-divider m-auto"></div>
+                    <h6 class="card-title pt-3">Tony Martinez</h6>
+                    <h6 class="customer-designation text-muted m-0">Content Creator</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="card customer-cards">
+                <div class="card-body">
+                  <div class="text-center">
+                    <img src="images/face3.jpg" width="89" height="89" alt="" class="img-customer">
+                    <p class="m-0 py-3 text-muted">Nunca voy a olvidar cuando empecé en Icons, tenía apenas cinco seguidores.</p>
+                    <div class="content-divider m-auto"></div>
+                    <h6 class="card-title pt-3">Sophia Armstrong</h6>
+                    <h6 class="customer-designation text-muted m-0">Content Creator</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="card customer-cards">
+                <div class="card-body">
+                  <div class="text-center">
+                    <img src="images/face20.jpg" width="89" height="89" alt="" class="img-customer">
+                    <p class="m-0 py-3 text-muted">Icons me permitió iniciarme en el mundo de la creación de contenido, gracias Icons.</p>
+                    <div class="content-divider m-auto"></div>
+                    <h6 class="card-title pt-3">Cody Lambert</h6>
+                    <h6 class="customer-designation text-muted m-0">Content Creator</h6>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </section>
+      <section class="contact-us" id="contact-section">
+        <div class="contact-us-bgimage grid-margin" >
+          <div class="pb-4">
+            <h4 class="px-3 px-md-0 m-0" data-aos="fade-down">Tienes algún proyecto?</h4>
+            <h4 class="pt-1" data-aos="fade-down" >Contáctanos</h4>
+          </div>
+          <div data-aos="fade-up">
+            <button class="btn btn-rounded btn-outline-danger" data-toggle="modal" data-target="#exampleModal">Contacto</button>
+          </div>
+        </div>
+      </section>
+      <section class="contact-details" id="contact-details-section">
+        <div class="row text-center text-md-left">
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+            <img src="images/Frame 2.svg" width="150" alt="" class="pb-2">
+            <div class="pt-2">
+              <p class="text-muted m-0">mikayla_beer@feil.name</p>
+              <p class="text-muted m-0">906-179-8309</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+            <h5 class="pb-2">Get in Touch</h5>
+            <p class="text-muted">Don’t miss any updates of our new templates and extensions.!</p>
+            <form>
+              <input type="text" class="form-control" id="Email" placeholder="Email id">
+            </form>
+            <div class="pt-3">
+              <button class="btn btn-dark">Subscribe</button>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+            <h5 class="pb-2">Our Guidelines</h5>
+            <a href="#"><p class="m-0 pb-2">Terms</p></a>
+            <a href="#" ><p class="m-0 pt-1 pb-2">Privacy policy</p></a>
+            <a href="#"><p class="m-0 pt-1 pb-2">Cookie Policy</p></a>
+            <a href="#"><p class="m-0 pt-1">Discover</p></a>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3 grid-margin">
+              <h5 class="pb-2">Our address</h5>
+              <p class="text-muted">518 Schmeler Neck<br>Bartlett. Illinois</p>
+              <div class="d-flex justify-content-center justify-content-md-start">
+                <a href="#"><span class="mdi mdi-facebook"></span></a>
+                <a href="#"><span class="mdi mdi-twitter"></span></a>
+                <a href="#"><span class="mdi mdi-instagram"></span></a>
+                <a href="#"><span class="mdi mdi-linkedin"></span></a>
+              </div>
+          </div>
+        </div>
+      </section>
+      <!-- Modal for Contact - us Button -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" data-toggle="modal" id="exampleModalLabel" data-target="#exampleModal">Contact Us</h4>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="Name">Name</label>
+                  <input type="text" class="form-control" id="Name" placeholder="Name">
+                </div>
+                <div class="form-group">
+                  <label for="Email">Email</label>
+                  <input type="email" class="form-control" id="Email-1" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <label for="Message">Message</label>
+                  <textarea class="form-control" id="Message" placeholder="Enter your Message"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-success">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script th:src="@{/vendors/jquery/jquery.min.js}"></script>
+  <script th:src="@{/vendors/bootstrap/bootstrap.min.js}"></script>
+  <script th:src="@{/vendors/owl-carousel/js/owl.carousel.min.js}"></script>
+  <script th:src="@{/vendors/aos/js/aos.js}"></script>
+  <script th:src="@{/js/landingpage.js}"></script>
+</body>
+</html>

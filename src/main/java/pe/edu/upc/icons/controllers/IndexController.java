@@ -5,11 +5,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/inicio")
+@RequestMapping("/")
 public class IndexController {
 	
 	@GetMapping
-	public String inicio() {
-		return "inicio";
+	public String land() {
+		return "landing";
+	}
+	
+	@GetMapping("index")
+	public String index() {
+		return "index";
+	}
+	
+	@GetMapping("layout")
+	public String layout() {
+		return "layout/layout";
 	}
 }

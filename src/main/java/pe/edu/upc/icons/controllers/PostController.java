@@ -39,6 +39,7 @@ public class PostController {
 	public static Date getHoraActual() {
 	    Date ahora = new Date();
 	    return ahora;
+	    
 	}
 	
 	@GetMapping

@@ -1,3 +1,24 @@
 .card {	
 	display: flex!important; 
 }
+
+.a{
+	width: 80px;
+}
+
+#list-creator {
+	width: 113%;
+	display: flex;
+	padding-left: 0px;
+	flex-flow: row wrap;
+	margin-right: 0px;
+}
+
+#list-creator li{
+	
+	list-style: none;
+}
+
+.card{
+	margin: 10px;
+}

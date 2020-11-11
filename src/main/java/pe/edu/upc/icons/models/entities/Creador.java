@@ -32,6 +32,15 @@ public class Creador {
 	@Column(name = "email", length = 30, nullable = false)
 	private String email;
 	
+	@Column(name = "categoria", length = 15)
+	private String categoria;
+	
+	@Column(name = "url_image", length = 100)
+	private String urlImage;
+	
+	@Column(name = "tag", length = 30)
+	private String tag;
+	
 	@OneToMany(mappedBy = "creador")
     private List<Suscripcion> creadorUsuarios;
 	
@@ -44,6 +53,30 @@ public class Creador {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+	public String getUrlImage() {
+		return urlImage;
+	}
+
+	public void setUrlImage(String urlImage) {
+		this.urlImage = urlImage;
+	}
+
+	public String getTag() {
+		return tag;
+	}
+
+	public void setTag(String tag) {
+		this.tag = tag;
 	}
 
 	public String getNombresApellidos() {
