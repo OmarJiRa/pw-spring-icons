@@ -1,4 +1,4 @@
-package pe.edu.upc.icons.models.entities;
+	package pe.edu.upc.icons.models.entities;
 
 import java.util.Date;
 import java.util.List;

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+<link rel="stylesheet" th:href="@{/css/solid.min.css}">
+<link rel="stylesheet" th:href="@{/css/market.css}">
+<title>Publicaciones</title>
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand" href="#"> <img
+			th:src="@{/images/IconsLogo.png}" width="30" height="30"
+			class="d-inline-block align-top" alt="" loading="lazy"> Icons
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarTogglerDemo02"
+			aria-controls="navbarTogglerDemo02" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<form th:action="@{/publicaciones/search_descripcion}" th:object="${comunidadPost}"
+			method="post" class="form-inline my-2 my-lg-0">
+			<input th:field="*{descripcion}" class="form-control mr-sm-2" type="search"
+				placeholder="Buscar por tema">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+		</form>
+
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li class="nav-item active"><a class="nav-link" href="#">Comunidades</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="#">Publicaciones</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Mi perfil</a>
+				</li>
+
+			</ul>
+
+		</div>
+	</nav>
+
+	<section class="container">
+
+		<h1 class="text-center" style="color:blue;">BIENVENIDO A LA COMUNIDAD </h1>
+
+		<h1>Publicaciones de las Comunidades</h1>
+
+		<!-- <div class="card" style="width: 18rem;">
+		<img alt="imagen" th:src="@{/images/twitter-icon.png}">
+		<div class="card-body">
+			<h5 class="card-title">
+				<span th:text="${comunidadPost.nombre}"></span>
+			</h5>
+			<p class="card-text" th:text="${comunidadPost.descripcion}"></p>
+			<a href="#" class="card-link">Ver publicación</a>
+		</div>
+	</div>-->
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Nombre de la publicación</th>
+					<th scope="col">Descripción</th>
+					<th scope="col">Creador</th>
+					<th scope="col">Fecha Creación</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="comunidadPost : ${publicaciones}">
+					<th th:text="${comunidadPost.id}" scope="row">.</th>
+					<td th:text="${comunidadPost.nombre}"></td>
+					<td th:text="${comunidadPost.descripcion}"></td>
+					<td th:text="${comunidadPost.creador}"></td>
+					<td th:text="${comunidadPost.fechaCreacion}"></td>
+					<td><a
+						th:href="@{'/publicaciones/view-' + ${comunidadPost.id}}"> </a></td>
+					<td><a th:href="@{/publicaciones/editar/}+${comunidadPost.id}"
+						class="btn btn-warning"><i class="fas fa-edit"></i>Editar</a> <a
+						th:href="@{/publicaciones/eliminar/}+${comunidadPost.id}"
+						class="btn btn-danger"><i class="fas fa-trash-alt"></i>Eliminar</a>
+				</tr>
+			</tbody>
+		</table>
+
+		<!-- Crear un formulario, ingresar data y enviarlo al controller -->
+		<span th:text="'Registrar Publicacion: '"></span>
+		<form th:action="@{/publicaciones/save}" th:object="${comunidadPost}"
+			method="post">
+			<div class="row">
+				<div class="col">
+					<input type="text" class="form-control" th:field="*{nombre}"
+						placeholder="Nombre">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control" th:field="*{descripcion}"
+						placeholder="Descripcion">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control" th:field="*{creador}"
+						placeholder="Creador">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control" th:field="*{fechaCreacion}"
+						placeholder="Fecha Creacion">
+				</div>
+			</div>
+			<button type="submit" class="btn btn-success">
+				<i class="fas fa-save"></i> Registar
+			</button>
+		</form>
+
+	</section>
+
+	<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+	<script th:src="@{/js/bootstrap..min.js}"></script>
+</body>
+</html>

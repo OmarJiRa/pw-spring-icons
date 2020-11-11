@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .card {	
 	display: flex!important; 
 }
@@ -20,5 +21,15 @@
 }
 
 .card{
+=======
+#list-card {
+	padding-left: 0px;
+	display: flex;
+}
+#list-card li {
+	list-style: none;
+}
+.card {
+>>>>>>> b7842678a49aa7ff52102a175ac3a50fdc9337ce
 	margin: 10px;
 }
