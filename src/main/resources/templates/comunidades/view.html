@@ -57,12 +57,13 @@
 				  <img alt="imagen" th:src="@{/images/IconsLogo.png}">
 				  <div class="card-body">
 				    <h5 class="card-title"> <span th:text="${comunidad.nombre}"></span> </h5>
+				    <p class="card-text" th:text="${comunidad.tema}"></p>
+				    <p class="card-text" th:text="${comunidad.fechaCreacion}"></p>
 				    <a href="#" class="card-link">Ver publicaciones de la comunidad</a>
 				  </div>
 				</div>
 			</li>
 		</ul>
-
 	</section>
 
 	<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
