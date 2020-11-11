@@ -8,7 +8,7 @@
 <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
 <link rel="stylesheet" th:href="@{/css/solid.min.css}">
 <link rel="stylesheet" th:href="@{/css/market.css}">
-<title>Comunidades -</title>
+<title>Publicaciones -</title>
 </head>
 <body>
 
@@ -23,9 +23,9 @@
 			aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<form th:action="@{/comunidades/search_tema}" th:object="${comunidad}"
+		<form th:action="@{/publicaciones/search_descripcion}" th:object="${comunidadPost}"
 			method="post" class="form-inline my-2 my-lg-0">
-			<input th:field="*{tema}" class="form-control mr-sm-2" type="search"
+			<input th:field="*{descripcion}" class="form-control mr-sm-2" type="search"
 				placeholder="Buscar por tema">
 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
 		</form>
@@ -45,19 +45,21 @@
 
 	<section class="container">
 
-		<h1 class="text-center" style="color:blue;">COMUNIDADES</h1>
+		<h1 class="text-center" style="color:blue;">PUBLICACIONES DE LAS COMUNIDADES</h1>
 
 		<h3>
-			Comunidades relacionadas con: <span th:text="${comunidad.tema}"></span>
+			Publicaciones relacionadas con: <span th:text="${comunidadPost.descripcion}"></span>
 		</h3>
 		<ul id="list-card"> 
-			<li th:each="comunidad : ${comunidades}"> 
+			<li th:each="comunidadPost : ${comunidadPosts}"> 
 				
 				</h5> <div class="card" style="width: 18rem;">
 				  <img alt="imagen" th:src="@{/images/IconsLogo.png}">
 				  <div class="card-body">
-				    <h5 class="card-title"> <span th:text="${comunidad.nombre}"></span> </h5>
-				    <a href="#" class="card-link">Ver publicaciones de la comunidad</a>
+				    <h5 class="card-title"> <span th:text="${comunidadPost.nombre}"></span> </h5>
+				    <p class="card-text" th:text="${comunidadPost.creador}"></p>
+				    <p class="card-text" th:text="${comunidadPost.fechaCreacion}"></p>
+				    <a href="#" class="card-link">Ver detalle de la publicación</a>
 				  </div>
 				</div>
 			</li>

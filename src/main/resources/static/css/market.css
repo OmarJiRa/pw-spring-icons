@@ -1,3 +1,10 @@
-.card {	
-	display: flex!important; 
+#list-card {
+	padding-left: 0px;
+	display: flex;
+}
+#list-card li {
+	list-style: none;
+}
+.card {
+	margin: 10px;
 }

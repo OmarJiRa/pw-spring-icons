@@ -6,4 +6,5 @@ import pe.edu.upc.icons.models.entities.Comunidad;
 
 public interface ComunidadService extends CrudService<Comunidad, Integer> {
 	List<Comunidad> findByNombre(String nombre) throws Exception;
+	List<Comunidad> findByTema(String tema) throws Exception;
 }
