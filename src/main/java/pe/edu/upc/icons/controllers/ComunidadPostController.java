@@ -4,7 +4,7 @@ import java.util.List;
 //import java.util.Optional;
 import java.util.Optional;
 
-import javax.persistence.Id;
+//import javax.persistence.Id;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -83,7 +83,6 @@ public class ComunidadPostController {
 	public String editar(@PathVariable int id, Model model) {
 		Optional<ComunidadPost>comunidadPostService
 	}*/
-	
 	
 	
     //  /publicaciones/delete
