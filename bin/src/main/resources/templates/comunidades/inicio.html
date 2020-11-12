@@ -32,12 +32,9 @@
 
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li class="nav-item active"><a class="nav-link" href="#">Comunidades</a>
-				</li>
+				<li th:href="@{'/comunidades-' + ${comunidad.id}}" class="nav-item active"><a class="nav-link" href="#">Comunidades</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">Publicaciones</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Mi perfil</a>
-				</li>
-
+				<li class="nav-item"><a class="nav-link" href="#">Mi perfil</a></li>
 			</ul>
 
 		</div>
@@ -45,8 +42,9 @@
 	
 	<section class="container">
 
-	<h1 class="text-center" style="color:blue;">COMUNIDAD</h1>
-
+	<h1 class="text-center" style="color:blue;">COMUNIDADES</h1>
+	
+	
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -66,11 +64,8 @@
 				<td th:text="${comunidad.descripcion}"></td>
 				<td th:text="${comunidad.tema}"></td>
 				<td th:text="${comunidad.fechaCreacion}"></td>
-				<td><a th:href="@{'/comunidades/view-' + ${comunidad.id}}">
-						<img alt="imagen" th:src="@{/images/join_us.png}">
-				</a></td>
-				<td><a th:href="@{/comunidades/eliminar/}+${comunidad.id}"
-					class="btn btn-danger"><i class="fas fa-trash-alt"></i>Eliminar</a></td>
+				<td><a th:href="@{'/comunidades/view-' + ${comunidad.id}}"> <img alt="imagen" th:src="@{/images/join_us.png}"> </a></td>
+				<td><a th:href="@{/comunidades/eliminar/}+${comunidad.id}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Eliminar</a></td>
 			</tr>
 		</tbody>
 	</table>

@@ -8,3 +8,11 @@
 .card {
 	margin: 10px;
 }
+#view-card {
+	display: flex;
+	margin-left: 30px;
+	
+}
+#view-image {
+	border-radius: 10px;
+}

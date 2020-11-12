@@ -32,12 +32,9 @@
 
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li class="nav-item active"><a class="nav-link" href="#">Comunidades</a>
-				</li>
+				<li class="nav-item active"><a class="nav-link" href="#">Comunidades</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">Publicaciones</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Mi perfil</a>
-				</li>
-
+				<li class="nav-item"><a class="nav-link" href="#">Mi perfil</a></li>
 			</ul>
 
 		</div>
@@ -49,16 +46,7 @@
 
 		<h1>Publicaciones de las Comunidades</h1>
 
-		<!-- <div class="card" style="width: 18rem;">
-		<img alt="imagen" th:src="@{/images/twitter-icon.png}">
-		<div class="card-body">
-			<h5 class="card-title">
-				<span th:text="${comunidadPost.nombre}"></span>
-			</h5>
-			<p class="card-text" th:text="${comunidadPost.descripcion}"></p>
-			<a href="#" class="card-link">Ver publicación</a>
-		</div>
-	</div>-->
+	    
 
 		<table class="table table-striped">
 			<thead>
@@ -68,6 +56,10 @@
 					<th scope="col">Descripción</th>
 					<th scope="col">Creador</th>
 					<th scope="col">Fecha Creación</th>
+					<th scope="col">Editar Post</th>
+					<th scope="col">Eliminar Post</th>
+					<th scope="col">Ver más</th>
+					<th scope="col">Comentarios</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -77,12 +69,11 @@
 					<td th:text="${comunidadPost.descripcion}"></td>
 					<td th:text="${comunidadPost.creador}"></td>
 					<td th:text="${comunidadPost.fechaCreacion}"></td>
-					<td><a
-						th:href="@{'/publicaciones/view-' + ${comunidadPost.id}}"> </a></td>
-					<td><a th:href="@{/publicaciones/editar/}+${comunidadPost.id}"
-						class="btn btn-warning"><i class="fas fa-edit"></i>Editar</a> <a
-						th:href="@{/publicaciones/eliminar/}+${comunidadPost.id}"
-						class="btn btn-danger"><i class="fas fa-trash-alt"></i>Eliminar</a>
+					<td><a th:href="@{'/publicaciones/view-' + ${comunidadPost.id}}"> </a> 
+					<a th:href="@{/publicaciones/editar/}+${comunidadPost.id}" class="btn btn-warning"><i class="fas fa-edit"></i>Editar </a></td>
+					<td><a th:href="@{/publicaciones/eliminar/}+${comunidadPost.id}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Eliminar </a></td>
+					<td><a href="#" class="btn btn-primary">Ver detalles</a></td>
+					<td><a th:href="@{/publicaciones/comentarios}" class="btn btn-info"><i class="fas fa-edit"></i> Comentarios</a></td>
 				</tr>
 			</tbody>
 		</table>
