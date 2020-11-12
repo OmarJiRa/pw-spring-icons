@@ -66,7 +66,7 @@ public class ComunidadController {
 			Optional<ComunidadPost> optional = comunidadPostService.findById(id);
 			if(optional.isPresent()) {
 				model.addAttribute("comunidadPost", optional.get());
-				return "publicaciones";
+				return "publicaciones/inicio";
 			} 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import pe.edu.upc.icons.models.entities.Comunidad;
+//import pe.edu.upc.icons.models.entities.Comunidad;
 import pe.edu.upc.icons.models.entities.ComunidadPost;
 import pe.edu.upc.icons.services.ComunidadPostService;
 
