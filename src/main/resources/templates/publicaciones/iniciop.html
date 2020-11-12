@@ -72,7 +72,7 @@
 					<td><a th:href="@{'/publicaciones/view-' + ${comunidadPost.id}}"> </a> 
 					<a th:href="@{/publicaciones/editar/}+${comunidadPost.id}" class="btn btn-warning"><i class="fas fa-edit"></i>Editar </a></td>
 					<td><a th:href="@{/publicaciones/eliminar/}+${comunidadPost.id}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Eliminar </a></td>
-					<td><a href="#" class="btn btn-primary">Ver detalles</a></td>
+					<td><a th:href="@{'/publicaciones/' + ${comunidadPost.tag} + '-' + ${comunidadPost.id} + '/p'}" class="btn btn-primary">Ver detalles</a></td>
 					<td><a th:href="@{/publicaciones/comentarios}" class="btn btn-info"><i class="fas fa-edit"></i> Comentarios</a></td>
 				</tr>
 			</tbody>

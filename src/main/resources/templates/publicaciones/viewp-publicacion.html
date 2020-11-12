@@ -64,6 +64,8 @@
 		  </div>
 		  <div class="card-body">
 		    <h5 class="card-title"><span th:text="${comunidadPostDetalle.descripcion}"></span></h5>
+		    <p class="card-text" th:text="${comunidadPostDetalle.creador}"></p>
+		    <p class="card-text" th:text="${comunidadPostDetalle.fechaCreacion}"></p>
 		    
 		    <!--<form th:action="@{/pedidos/addcar}" th:object="${detallePedido}" method="post">
 		    	<div class="form-group row">
