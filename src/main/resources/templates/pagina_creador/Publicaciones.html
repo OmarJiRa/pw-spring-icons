@@ -35,5 +35,65 @@
 
 		</div>
 	</nav>
+	
+	
+	<section class="container">
+
+		<h1 class="text-center" style="color:blue;">PUBLICACIONES DEL CREADOR DE CONTENIDO </h1>
+
+		<h1>Publicaciones del creador de contenido</h1>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Nombre de la publicación</th>
+					<th scope="col">Descripción</th>
+					<th scope="col">Creador</th>
+					<th scope="col">Fecha Creación</th>
+					<th scope="col">Comentarios</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="creadorPost : ${creadorposts}">
+					<th th:text="${creadorPost.id}" scope="row">.</th>
+					<td th:text="${creadorPost.nombre}"></td>
+					<td th:text="${creadorPost.descripcion}"></td>
+					<td th:text="${creadorPost.creador}"></td>
+					<td th:text="${creadorPost.fechaCreacion}"></td>
+					<td><a th:href="@{'/pagina_creador/view-' + ${creadorPost.id}}"><a href="#" class="btn btn-primary">Comentarios</a> 
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!-- Crear un formulario, ingresar data y enviarlo al controller -->
+		<span th:text="'Registrar Publicacion: '"></span>
+		<form th:action="@{/creadorpost/save}" th:object="${creadorPost}"
+			method="post">
+			<div class="row">
+				<div class="col">
+					<input type="text" class="form-control" th:field="*{nombre}"
+						placeholder="Nombre">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control" th:field="*{descripcion}"
+						placeholder="Descripcion">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control" th:field="*{creador}"
+						placeholder="Creador">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control" th:field="*{fechaCreacion}"
+						placeholder="Fecha Creacion">
+				</div>
+			</div>
+			<button type="submit" class="btn btn-success">
+				<i class="fas fa-save"></i> Registar
+			</button>
+		</form>
+
+	</section>
 </body>
 </html>
