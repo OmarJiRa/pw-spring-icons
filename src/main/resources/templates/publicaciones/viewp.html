@@ -32,8 +32,7 @@
 
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li class="nav-item active"><a class="nav-link" href="#">Comunidades</a>
-				</li>
+				<li class="nav-item active"><a class="nav-link" href="#">Comunidades</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">Publicaciones</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">Mi perfil</a>
 				</li>
@@ -46,20 +45,17 @@
 	<section class="container">
 
 		<h1 class="text-center" style="color:blue;">PUBLICACIONES DE LAS COMUNIDADES</h1>
-
-		<h3>
-			Publicaciones relacionadas con: <span th:text="${comunidadPost.descripcion}"></span>
-		</h3>
-		<ul id="list-card"> 
-			<li th:each="comunidadPost : ${comunidadPosts}"> 
+		
+		<h3>Publicaciones relacionadas con: <span th:text="${comunidadPost.descripcion}"></span></h3>
+		<ul id="list-card">
+			<li th:each="comunidadPost : ${comunidadPosts}">  
 				
-				</h5> <div class="card" style="width: 18rem;">
-				  <img alt="imagen" th:src="@{/images/IconsLogo.png}">
+				<div class="card" style="width: 18rem;">
+				  <img alt="imagen" th:src="@{${comunidadPost.urlImage}}" class="img-thumbnail">
 				  <div class="card-body">
-				    <h5 class="card-title"> <span th:text="${comunidadPost.nombre}"></span> </h5>
+				    <h5 class="card-title"><a th:href="@{'/publicaciones/' + ${comunidadPost.tag} + '-' + ${comunidadPost.id} + '/p'}" class="card-link"><span th:text="${comunidadPost.nombre}"></span> </a></h5>
 				    <p class="card-text" th:text="${comunidadPost.creador}"></p>
-				    <p class="card-text" th:text="${comunidadPost.fechaCreacion}"></p>
-				    <a href="#" class="card-link">Ver detalle de la publicación</a>
+				    <a th:href="@{'/publicaciones/' + ${comunidadPost.tag} + '-' + ${comunidadPost.id} + '/p'}" class="card-link">Ver detalle de la publciación</a>
 				  </div>
 				</div>
 			</li>

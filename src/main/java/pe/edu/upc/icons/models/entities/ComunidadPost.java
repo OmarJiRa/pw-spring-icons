@@ -24,7 +24,7 @@ public class ComunidadPost {
 	@Column(name = "nombre", length = 50, nullable = false)
 	private String nombre;
 	
-	@Column(name = "descripcion", length = 200, nullable = false)
+	@Column(name = "descripcion", length = 1000, nullable = false)
 	private String descripcion;
 	
 	@Column(name = "creador", length = 30, nullable = false)
@@ -33,6 +33,12 @@ public class ComunidadPost {
 	@Column(name = "fecha_creacion", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date fechaCreacion;
+	
+	@Column(name = "url_image", length = 100)
+	private String urlImage;
+	
+	@Column(name = "tag", length = 50)
+	private String tag;
 	
 	public Integer getId() {
 		return id;
@@ -80,6 +86,22 @@ public class ComunidadPost {
 
 	public void setComunidadUsuarios(List<ComunidadUsuario> comunidadUsuarios) {
 		this.comunidadUsuarios = comunidadUsuarios;
+	}
+
+	public String getUrlImage() {
+		return urlImage;
+	}
+
+	public void setUrlImage(String urlImage) {
+		this.urlImage = urlImage;
+	}
+
+	public String getTag() {
+		return tag;
+	}
+
+	public void setTag(String tag) {
+		this.tag = tag;
 	}
 
 	@OneToMany(mappedBy = "comunidad")

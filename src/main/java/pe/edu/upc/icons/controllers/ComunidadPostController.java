@@ -119,4 +119,38 @@ public class ComunidadPostController {
 		}
 		return "/publicaciones/viewp";
 	}
+	
+	@GetMapping("{tag}-{id}/p")
+	public String viewPublicacion(@ModelAttribute("comunidadPost") ComunidadPost comunidadPost,
+			@PathVariable("id") Integer id, Model model ) {
+
+		try {
+			Optional<ComunidadPost> optional = comunidadPostService.findById(id);
+			if(optional.isPresent()) {
+				
+				/*Tienda tienda = new Tienda();
+				
+				Pedido pedido = new Pedido();
+				pedido.setTienda(tienda);
+				
+				DetallePedido detallePedido = new DetallePedido();
+				detallePedido.setCantidad(1);
+				detallePedido.setDescuento(0F);
+				detallePedido.setPedido( pedido );
+				detallePedido.setProducto( optional.get() );
+				detallePedido.setSubTotal(0F);
+				
+				model.addAttribute("tienda", tienda);
+				model.addAttribute("pedido", pedido);
+				model.addAttribute("detallePedido", detallePedido);	*/			
+				model.addAttribute("comunidadPost", comunidadPost);	// Search
+				model.addAttribute("comunidadPostDetalle", optional.get());
+				return "/publicaciones/viewp-publicacion";
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:/publicaciones";
+	}
 }

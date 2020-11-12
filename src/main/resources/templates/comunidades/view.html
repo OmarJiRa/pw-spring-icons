@@ -59,7 +59,7 @@
 				    <h5 class="card-title"> <span th:text="${comunidad.nombre}"></span> </h5>
 				    <p class="card-text" th:text="${comunidad.tema}"></p>
 				    <p class="card-text" th:text="${comunidad.fechaCreacion}"></p>
-				    <a href="#" class="card-link">Ver publicaciones de la comunidad</a>
+				    <a th:href="@{'/comunidades/view-' + ${comunidad.id}}" class="card-link">Ver publicaciones de la comunidad</a>
 				  </div>
 				</div>
 			</li>

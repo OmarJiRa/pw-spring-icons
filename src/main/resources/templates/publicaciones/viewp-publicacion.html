@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+<link rel="stylesheet" th:href="@{/css/solid.min.css}">
+<link rel="stylesheet" th:href="@{/css/market.css}">
+<title>Publicaciones -</title>
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand" href="#"> <img
+			th:src="@{/images/IconsLogo.png}" width="30" height="30"
+			class="d-inline-block align-top" alt="" loading="lazy"> Icons
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarTogglerDemo02"
+			aria-controls="navbarTogglerDemo02" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<form th:action="@{/publicaciones/search_descripcion}" th:object="${comunidadPost}"
+			method="post" class="form-inline my-2 my-lg-0">
+			<input th:field="*{descripcion}" class="form-control mr-sm-2" type="search"
+				placeholder="Buscar por tema">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+		</form>
+
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li class="nav-item active"><a class="nav-link" href="#">Comunidades</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="#">Publicaciones</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Mi perfil</a>
+				</li>
+
+			</ul>
+
+		</div>
+	</nav>
+
+	<section class="container">
+
+	<nav aria-label="breadcrumb">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item">Home</li>
+	    <li class="breadcrumb-item"><span th:text="Comunidad"></span></li>
+	    <li class="breadcrumb-item"><span th:text="Publicaciones"></span></li>
+	    <li class="breadcrumb-item active" aria-current="page"><span th:text="${comunidadPostDetalle.nombre}"></span></li>
+	  </ol>
+	</nav>
+	
+	<div id="view-card">
+		<div >
+			<img id="view-image" th:src="@{${comunidadPostDetalle.urlImage}}" class="img-fluid" alt="Responsive image">
+		</div>
+		<div class="card">
+		  <div class="card-header">
+		    <span th:text="${comunidadPostDetalle.nombre}"></span>
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title"><span th:text="${comunidadPostDetalle.descripcion}"></span></h5>
+		    
+		    <!--<form th:action="@{/pedidos/addcar}" th:object="${detallePedido}" method="post">
+		    	<div class="form-group row">
+				    <table class="table table-hover">
+					  <thead>
+					    <tr>
+					      <th scope="col"></th>
+					      <th scope="col">Tienda</th>
+					      <th scope="col">Precio</th>
+					      <th scope="col">Stock</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr th:each="productoTienda : ${producto.productoTiendas}">
+					      <th scope="row"></th>
+					      <td>
+					      	<input class="form-check-input" type="radio" 
+					      		th:field="*{pedido.tienda}" th:value="${productoTienda.tienda.id}">
+					      	<label th:for="${#ids.prev('pedido.tienda')}" th:text="${productoTienda.tienda.nombre}"></label>
+					      </td>
+					      <td th:text="${productoTienda.costo}">Otto</td>
+					      <td th:text="${productoTienda.stock}">Otto</td>
+					    </tr>
+					  </tbody>
+					</table>
+				</div>
+				<div class="form-group row">
+					<label for="cantidad" class="col-sm-4 col-form-label">Cantidad: </label>
+   					<div class="col-sm-8">
+	  					<input type="number" class="form-control" th:field="*{cantidad}" placeholder="">
+					</div>	
+				</div>
+				<div class="form-group text-center">
+					<button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Agregar a Carro</button>
+				</div>				    
+			    
+		    </form>-->
+		  </div>
+		</div>
+	</div>
+
+	</section>
+
+	<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+	<script th:src="@{/js/bootstrap..min.js}"></script>
+</body>
+</html>
