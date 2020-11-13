@@ -75,7 +75,7 @@ public class CreadorController {
 	public String seguir(@ModelAttribute("creador") Creador creador, SessionStatus status) {
 		try {
 			System.out.println("EL id es: " + creador.getId());
-			usuarioService.setSeguimiento(3, creador.getId());
+			usuarioService.setSeguimiento(1, creador.getId());
 			status.setComplete();
 			
 		} catch (Exception e) {
