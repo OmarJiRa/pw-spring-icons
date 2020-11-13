@@ -44,41 +44,9 @@
 
 		<h1 class="text-center" style="color:blue;">BIENVENIDO A LA COMUNIDAD </h1>
 
-		<h1>Publicacionooop</h1>
+		<h1>Publicaciones:</h1>
 
-	    
-
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th scope="col">#</th>
-					<th scope="col">Nombre de la publicación</th>
-					<th scope="col">Descripción</th>
-					<th scope="col">Creador</th>
-					<th scope="col">Fecha Creación</th>
-					<th scope="col">Editar Post</th>
-					<th scope="col">Eliminar Post</th>
-					<th scope="col">Ver más</th>
-					<th scope="col">Comentarios</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="comunidadPost : ${publicaciones}">
-					<th th:text="${comunidadPost.id}" scope="row">.</th>
-					<td th:text="${comunidadPost.nombre}"></td>
-					<td th:text="${comunidadPost.descripcion}"></td>
-					<td th:text="${comunidadPost.creador}"></td>
-					<td th:text="${comunidadPost.fechaCreacion}"></td>
-					<td><a th:href="@{'/publicaciones/view-' + ${comunidadPost.id}}"> </a> 
-					<a th:href="@{/publicaciones/editar/}+${comunidadPost.id}" class="btn btn-warning"><i class="fas fa-edit"></i>Editar </a></td>
-					<td><a th:href="@{/publicaciones/eliminar/}+${comunidadPost.id}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Eliminar </a></td>
-					<td><a th:href="@{'/publicaciones/' + ${comunidadPost.tag} + '-' + ${comunidadPost.id} + '/p'}" class="btn btn-primary">Ver detalles</a></td>
-					<td><a th:href="@{/publicaciones/comentarios}" class="btn btn-info"><i class="fas fa-edit"></i> Comentarios</a></td>
-				</tr>
-			</tbody>
-		</table>
-
-		<!-- Crear un formulario, ingresar data y enviarlo al controller -->
+	    	<!-- Crear un formulario, ingresar data y enviarlo al controller -->
 		<span th:text="'Registrar Publicacion: '"></span>
 		<form th:action="@{/publicaciones/save}" th:object="${comunidadPost}"
 			method="post">
@@ -100,10 +68,39 @@
 						placeholder="Fecha Creacion">
 				</div>
 			</div>
-			<button type="submit" class="btn btn-success">
+			<p></p>
+			<p><button type="submit" class="btn btn-success">
 				<i class="fas fa-save"></i> Registar
-			</button>
+			</button></p>
 		</form>
+		
+		<table class="table table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">#</th>
+					<th class="text-center" scope="col">Nombre de la publicación</th>
+					<th class="text-center"scope="col">Descripción</th>
+					<th class="text-center"scope="col">Creador</th>
+					<th class="text-center"scope="col">Fecha Creación</th>
+					<th class="text-center"scope="col">Editar Post</th>
+					<th class="text-center"scope="col">Eliminar Post</th>
+					<th class="text-center"scope="col">Ver más</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="comunidadPost : ${publicaciones}">
+					<th th:text="${comunidadPost.id}" scope="row">.</th>
+					<td th:text="${comunidadPost.nombre}"></td>
+					<td th:text="${comunidadPost.descripcion}"></td>
+					<td th:text="${comunidadPost.creador}"></td>
+					<td th:text="${comunidadPost.fechaCreacion}"></td>
+					<td><a th:href="@{'/publicaciones/view-' + ${comunidadPost.id}}"> </a> 
+					<a th:href="@{/publicaciones/editar/}+${comunidadPost.id}" class="btn btn-warning"><i class="fas fa-edit"></i>Editar </a></td>
+					<td><a th:href="@{/publicaciones/eliminar/}+${comunidadPost.id}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Eliminar </a></td>
+					<td><a th:href="@{'/publicaciones/' + ${comunidadPost.tag} + '-' + ${comunidadPost.id} + '/p'}" class="btn btn-primary">Ver detalles</a></td>
+				</tr>
+			</tbody>
+		</table>
 
 	</section>
 
