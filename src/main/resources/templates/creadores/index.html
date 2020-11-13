@@ -19,10 +19,10 @@
 	<header th:fragment="header">
 
 		<nav class="navbar navbar-expand-lg navbar-custom">
-			<div class="container ">
+			<div class="container">
 
 				<div class="collapse navbar-collapse" id="navbarNav">
-					<img src="images/Frame 1.svg" width="150" height="60" alt="Icons">
+					<img th:src="@{/images/Frame1.svg}" width="150" height="60" alt="Icons">
 
 				</div>
 
@@ -49,11 +49,11 @@
 		<div id="sidebar-container" class="bg-dark">
 
 			<div class="menu">
-				<a href="posts" class="d-block text-light p-3 border-0"><i
+				<a th:href="@{~/posts}" class="d-block text-light p-3 border-0"><i
 					class="icon ion-md-apps lead mr-2"></i> Publicaciones</a> <a
-					href="creadores" class="d-block text-light p-3 border-0"><i
+					th:href="@{~/creadores}" class="d-block text-light p-3 border-0"><i
 					class="icon ion-md-paper lead mr-2"></i> Creadores</a><a
-					href="comunidades" class="d-block text-light p-3 border-0"><i
+					th:href="@{~/comunidades}" class="d-block text-light p-3 border-0"><i
 					class="icon ion-md-people lead mr-2"></i> Comunidades</a> <a
 					href="medios" class="d-block text-light p-3 border-0"><i
 					class="icon ion-md-card lead mr-2"></i> Medios de Pago</a> <a href="#"

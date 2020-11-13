@@ -39,8 +39,59 @@
 		<div class="container text-center"
 			style="margin-left: 50px; margin-right: 50px">
 
-			
+			&nbsp;
+			<h1>
+				<span th:text="${creador.nombresApellidos}"></span>
+			</h1>
+
+			<div class="">
+				<img th:src="@{${creador.urlImage}}" class="img-fluid img-thumbnail"
+					style="width: 350px;">
+
+			</div>
+			<span th:text="${creador.categoria}"></span> &nbsp;
+			<div class="text-center" style="margin-top: 10px;">
+
+				<form th:action="@{/creadores/seguir}" th:object="${creador}" method="post"><button type="submit" class="btn btn-primary" style="width: 120px;">Seguir</button></form>
+				<button type="button" class="btn btn-success" style="width: 120px;">Suscribirse</button>
+			</div>
+			<div style="margin-top: 40px;">
+				<ul id="list-posts">
+					<li th:each="post : ${posts}">
+
+						<div class="card mb-3"
+							style="max-width: 1200px; list-style: none;">
+							<div class="row no-gutters">
+								<div class="col-md-3">
+									<img src="/images/creadores/brunito.jpg" class="card-responsive"
+										style="width: 250px;">
+								</div>
+								<div class="col-md-8">
+									<div class="card-body">
+										<p class="card-text">
+											<small class="text-muted" th:text="${post.fechaPublicacion}"></small>
+										</p>
+										<h5 class="card-title" th:text="${post.nombre}"></h5>
+										<p class="card-text" th:text="${post.descripcion}"></p>
+
+										<h5 class="card-text">
+											<small class="card-text"
+												th:text="'Created by ' + ${post.creador.getNombresApellidos()}"></small>
+											&nbsp;
+										</h5>
+										<a th:href="@{'/posts/view-' + ${post.id}}"
+											class="btn btn-primary text-right">Ver más</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</li>
+				</ul>
+			</div>
 		</div>
+
+
 	</div>
 
 	<footer th:fragment="footer">

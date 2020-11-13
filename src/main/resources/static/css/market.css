@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 .card {	
 	display: flex!important; 
 }
@@ -16,20 +16,14 @@
 }
 
 #list-creator li{
-	
+	margin-right: 10px;
+	margin-bottom: 10px;
 	list-style: none;
 }
 
-.card{
-=======
-#list-card {
-	padding-left: 0px;
-	display: flex;
-}
-#list-card li {
+#list-posts li{
+	margin-right: 10px;
+	margin-bottom: 10px;
 	list-style: none;
 }
-.card {
->>>>>>> b7842678a49aa7ff52102a175ac3a50fdc9337ce
-	margin: 10px;
-}
+

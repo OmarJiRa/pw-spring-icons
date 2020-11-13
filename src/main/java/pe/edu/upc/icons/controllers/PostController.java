@@ -57,7 +57,7 @@ public class PostController {
 		post.setHoraPublicacion(getHoraActual());
 		
 		try {
-			List<Post> posts = postService.findAll();
+			List<Post> posts = postService.findByExclusivo(false);
 			model.addAttribute("post", post);
 			model.addAttribute("posts", posts); 
 		} catch (Exception e) {

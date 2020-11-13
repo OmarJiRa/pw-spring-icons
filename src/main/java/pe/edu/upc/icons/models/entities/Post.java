@@ -54,6 +54,9 @@ public class Post {
 	@Column(name = "exclusivo", nullable = false)
 	private Boolean exclusivo;
 	
+	@Column(name = "thumbnail")
+	private String thumbnail;
+	
 	@ManyToOne
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
@@ -182,7 +185,12 @@ public class Post {
 	public void setCreadorId(Integer creadorId) {
 		this.creadorId = creadorId;
 	}
-	
-	
-	
+
+	public String getThumbnail() {
+		return thumbnail;
+	}
+
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}	
 }

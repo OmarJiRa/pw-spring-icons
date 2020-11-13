@@ -1,6 +1,5 @@
 package pe.edu.upc.icons.models.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -21,12 +20,6 @@ public class Seguimiento {
 	@ManyToOne
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
-	
-	@Column(name = "tipo", nullable = false)
-	private Integer tipo;
-	
-	@Column(name = "monto", nullable = false)
-	private Integer monto;
 
 	public Creador getCreador() {
 		return creador;
@@ -44,7 +37,4 @@ public class Seguimiento {
 		this.usuario = usuario;
 	}
 
-	public void setTipo(Integer tipo) {
-		this.tipo = tipo;
-	}
 }
