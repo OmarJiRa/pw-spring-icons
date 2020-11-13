@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="es"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+ 	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+    <link rel="stylesheet" th:href="@{/css/solid.min.css}">
+    <link rel="stylesheet" th:href="@{/css/market.css}">
+<title>INICIO</title>
 </head>
 <body>
-	<h1>Hello Icons</h1>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand" href="#"> <img
+			th:src="@{/images/IconsLogo.png}" width="30" height="30"
+			class="d-inline-block align-top" alt="" loading="lazy"> Icons
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarTogglerDemo02"
+			aria-controls="navbarTogglerDemo02" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li class="nav-item active"><a class="nav-link" href="#">Inicio</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="#">Comunidades</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Mi perfil</a>
+				</li>
+
+			</ul>
+
+		</div>
+	</nav>
+	<section class="container">
+	<h1>Interfaz Web</h1>
+	<p> <p>
+	<a th:href="@{/vercomentarios}" class="btn btn-primary"> Ver Comentarios</a> 
+	</section>
 </body>
 </html>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
     <link rel="stylesheet" th:href="@{/css/solid.min.css}">
     <link rel="stylesheet" th:href="@{/css/market.css}">
-<title>Ver comentarios</title>
+<title>Comentarios de la publicacion</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -36,10 +36,12 @@
 		</div>
 	</nav>
 	
+		
 	<section class="container">
-		<h1 class="text-center" style="color:blue;">COMENTARIOS DE TUS PUBLICACIONES </h1>
 
-		<h1>Comentarios de tus publicaciones</h1>
+		<h1 class="text-center" style="color:blue;">COMENTARIOS DE LA PUBLICACION DEL CREADOR </h1>
+
+		<h1>Comentarios de la publicacion del creador</h1>
 
 		<table class="table table-striped">
 			<thead>
@@ -59,6 +61,30 @@
 				</tr>
 			</tbody>
 		</table>
+
+		<!-- Crear un formulario, ingresar data y enviarlo al controller -->
+		<span th:text="'Registrar Comentario: '"></span>
+		<form th:action="@{/comentariocreadorpost/save}" th:object="${comentariocreadorPost}"
+			method="post">
+			<div class="row">
+				<div class="col">
+					<input type="text" class="form-control" th:field="*{descripcion}"
+						placeholder="Descripcion">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control" th:field="*{creador}"
+						placeholder="Creador">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control" th:field="*{fechaCreacion}"
+						placeholder="Fecha Creacion">
+				</div>
+			</div>
+			<button type="submit" class="btn btn-success">
+				<i class="fas fa-save"></i> Registar
+			</button>
+		</form>
+
 	</section>
 </body>
 </html>
