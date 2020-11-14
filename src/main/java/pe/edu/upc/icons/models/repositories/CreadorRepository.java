@@ -24,11 +24,11 @@ public interface CreadorRepository extends JpaRepository<Creador, Integer> {
 	@Query("SELECT COUNT(u.usuario) "
 			  + "FROM UsuarioPost u JOIN Post p ON u.post = p.id JOIN Creador c ON c.id = p.creador "
 			  + "WHERE u.comentario != '' AND c.id= :id")
-	Integer numeroComentarios(@Param("id")Integer id) throws Exception;
+	Integer numeroComentarios(@Param("id") Integer id) throws Exception;
 	
 	@Query("SELECT COUNT(s.usuario) FROM Seguimiento s WHERE s.creador.id = :id")
-	Integer numeroSeguidores(@Param("id")Integer id) throws Exception;
+	Integer numeroSeguidores(@Param("id") Integer id) throws Exception;
 	
 	@Query("SELECT COUNT(s.usuario) FROM Suscripcion s WHERE s.creador.id = :id")
-	Integer numeroSuscriptores(@Param("id")Integer id) throws Exception;
+	Integer numeroSuscriptores(@Param("id") Integer id) throws Exception;
 }
