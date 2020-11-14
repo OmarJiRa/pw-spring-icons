@@ -17,8 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import pe.edu.upc.icons.models.entities.ComentariosPost;
+//import pe.edu.upc.icons.models.entities.ComentariosPost;
 //import pe.edu.upc.icons.models.entities.Comunidad;
 import pe.edu.upc.icons.models.entities.ComunidadPost;
+import pe.edu.upc.icons.services.ComentariosPostService;
 import pe.edu.upc.icons.services.ComunidadPostService;
 
 @Controller
@@ -28,6 +31,7 @@ public class ComunidadPostController {
 	
 	@Autowired
 	private ComunidadPostService comunidadPostService;
+	private ComentariosPostService comentariosPostService;
 	
 	//Para obtener data de la BD y enviarlo al Front
 	@GetMapping
@@ -152,5 +156,20 @@ public class ComunidadPostController {
 			e.printStackTrace();
 		}
 		return "redirect:/publicaciones";
+	}
+	
+	@GetMapping("view-{id}")
+	public String view(@PathVariable("id") Integer id, Model model) {
+		try {
+			Optional<ComentariosPost> optional = comentariosPostService.findById(id);
+			if(optional.isPresent()) {
+				model.addAttribute("comentarioPost", optional.get());
+				return "comentarios/inicio";
+			} 
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+		}
+		return "redirect:/comentarios";
 	}
 }

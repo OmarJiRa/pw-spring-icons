@@ -8,11 +8,11 @@
 <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
 <link rel="stylesheet" th:href="@{/css/solid.min.css}">
 <link rel="stylesheet" th:href="@{/css/market.css}">
-<title>Comunidades</title>
+<title>Publicaciones -</title>
 </head>
 <body style="background-color:#F0F8FF;">
-
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	
+	<!--  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 		<a class="navbar-brand" href="#"> <img
 			th:src="@{/images/IconsLogo.png}" width="30" height="30"
 			class="d-inline-block align-top" alt="" loading="lazy"> Icons
@@ -39,28 +39,24 @@
 			</ul>
 
 		</div>
-	</nav>
+	</nav>-->
 
 	<section class="container">
 
-		<h1 class="text-center" style="color: blue;">COMUNIDADES</h1>
+		<h1 class="text-center" style="color: blue;">COMENTARIOS</h1>
 
 		<!-- Crear un formulario, ingresar data y enviarlo al controller -->
-		<span th:text="'Registrar Comunidad: '"></span>
-		<form th:action="@{/comunidades/save}" th:object="${comunidad}"
+		<span th:text="'Registrar Comentarios: '"></span>
+		<form th:action="@{/comentarios/save}" th:object="${comentario}"
 			method="post">
 			<div class="row">
 				<div class="col">
-					<input type="text" class="form-control" th:field="*{nombre}"
-						placeholder="Nombre">
+					<input type="text" class="form-control" th:field="*{creador}"
+						placeholder="Nombre Creador">
 				</div>
 				<div class="col">
 					<input type="text" class="form-control" th:field="*{descripcion}"
 						placeholder="Descripcion">
-				</div>
-				<div class="col">
-					<input type="text" class="form-control" th:field="*{tema}"
-						placeholder="Tema">
 				</div>
 				<div class="col">
 					<input type="text" class="form-control" th:field="*{fechaCreacion}"
@@ -68,35 +64,28 @@
 				</div>
 			</div>
 			<p></p>
-			<p><button type="submit" class="btn btn-success">
-				<i class="fas fa-save"></i> Registar
-			</button></p>
+			<p>
+				<button type="submit" class="btn btn-success">
+					<i class="fas fa-save"></i> Registar
+				</button>
+			</p>
 		</form>
 
 		<table class="table table-striped">
 			<thead class="thead-dark">
 				<tr>
-					<th class="text-center" scope="col">#</th>
-					<th class="text-center" scope="col">Nombre</th>
+					<th scope="col">#</th>
+					<th class="text-center" scope="col">Creador</th>
 					<th class="text-center" scope="col">Descripcion</th>
-					<th class="text-center" scope="col">Tema</th>
 					<th class="text-center" scope="col">Fecha Creacion</th>
-					<th class="text-center" scope="col">Unete a la Comunidad</th>
-					<th class="text-center" scope="col">Eliminar Comunidad</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="comunidad : ${comunidades}">
-					<th class="text-center" th:text="${comunidad.id}" scope="row">.</th>
-					<td class="text-center" th:text="${comunidad.nombre}"></td>
-					<td class="text-center" th:text="${comunidad.descripcion}"></td>
-					<td class="text-center" th:text="${comunidad.tema}"></td>
-					<td class="text-center" th:text="${comunidad.fechaCreacion}"></td>
-					<td><a th:href="@{'/comunidades/view-' + ${comunidad.id}}">
-							<img alt="imagen" th:src="@{/images/join_us.png}">
-					</a></td>
-					<td><a th:href="@{/comunidades/eliminar/}+${comunidad.id}"
-						class="btn btn-danger"><i class="fas fa-trash-alt"></i>Eliminar</a></td>
+				<tr th:each="comentario : ${comentarios}">
+					<th class="text-center" th:text="${comentario.id}" scope="row">.</th>
+					<td class="text-center" th:text="${comentario.creador}"></td>
+					<td class="text-center" th:text="${comentario.descripcion}"></td>
+					<td class="text-center" th:text="${comentario.fechaCreacion}"></td>
 				</tr>
 			</tbody>
 		</table>

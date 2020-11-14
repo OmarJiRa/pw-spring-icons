@@ -10,7 +10,7 @@
 <link rel="stylesheet" th:href="@{/css/market.css}">
 <title>Publicaciones -</title>
 </head>
-<body>
+<body style="background-color:#F0F8FF;">
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 		<a class="navbar-brand" href="#"> <img
@@ -58,19 +58,70 @@
 		<div >
 			<img id="view-image" th:src="@{${comunidadPostDetalle.urlImage}}" class="img-fluid" alt="Responsive image">
 		</div>
-		<div class="card">
+		<div class="card text-white bg-dark mb-3">
 		  <div class="card-header">
-		    <span th:text="${comunidadPostDetalle.nombre}"></span>
+		    <span class="text-center" th:text="${comunidadPostDetalle.nombre}"></span>
 		  </div>
 		  <div class="card-body">
-		    <h5 class="card-title"><span th:text="${comunidadPostDetalle.descripcion}"></span></h5>
-		    <p class="card-text" th:text="${comunidadPostDetalle.creador}"></p>
-		    <p class="card-text" th:text="${comunidadPostDetalle.fechaCreacion}"></p>
+		    <!--<h5 class="card-title title-center"><span class="text-center " th:text="${comunidadPostDetalle.descripcion}"></span></h5>-->
+		    <h5 class="card-text text-center" th:text="${comunidadPostDetalle.descripcion}"></h5>
+		    <p class="card-text text-right" th:text="${comunidadPostDetalle.creador}"></p>
+		    <p class="card-text text-right" th:text="${comunidadPostDetalle.fechaCreacion}"></p>
 		  </div>
 		</div>
 	</div>
 	
-	<h1>AQUI ME QUEDE</h1>
+	
+	
+	
+		<!-- Crear un formulario, ingresar data y enviarlo al controller 
+		<span th:text="'Registrar Comunidad: '"></span>
+		<form th:action="@{/comunidades/save}" th:object="${comunidad}"
+			method="post">
+			<div class="row">
+				<div class="col">
+					<input type="text" class="form-control" th:field="*{nombre}"
+						placeholder="Nombre">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control" th:field="*{descripcion}"
+						placeholder="Descripcion">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control" th:field="*{tema}"
+						placeholder="Tema">
+				</div>
+				<div class="col">
+					<input type="text" class="form-control" th:field="*{fechaCreacion}"
+						placeholder="Fecha Creacion">
+				</div>
+			</div>
+			<p></p>
+			<p>
+				<button type="submit" class="btn btn-success">
+					<i class="fas fa-save"></i> Registar
+				</button>
+			</p>
+		</form>-->
+		
+		<!--  <table class="table table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Creador</th>
+					<th scope="col">Descripcion</th>
+					<th scope="col">Fecha Creacion</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="comentario : ${comentarios}">
+					<th th:text="${comentario.id}" scope="row">.</th>
+					<td th:text="${comentario.creador}"></td>
+					<td th:text="${comentario.descripcion}"></td>
+					<td th:text="${comentario.fechaCreacion}"></td>
+				</tr>
+			</tbody>
+		</table>-->
 
 	</section>
 

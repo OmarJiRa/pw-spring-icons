@@ -56,6 +56,7 @@ public class ComunidadPostServiceImpl implements ComunidadPostService, Serializa
 		return comunidadPostRepository.findByNombreContaining(nombre);
 	}
 
+	@Transactional(readOnly = true)
 	@Override
 	public List<ComunidadPost> findByDescripcion(String descripcion) throws Exception {
 		return comunidadPostRepository.findByDescripcionContaining(descripcion);
