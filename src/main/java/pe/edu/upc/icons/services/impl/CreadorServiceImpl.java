@@ -68,4 +68,28 @@ public class CreadorServiceImpl implements CreadorService, Serializable {
 		return creadorRepository.findByNumeroDocumento(numeroDocumento);
 	}
 
+	@Transactional(readOnly = true)
+	@Override
+	public Integer numeroMeGusta(Integer id) throws Exception {
+		return creadorRepository.numeroMeGusta(id);
+	}
+
+	@Transactional(readOnly = true)
+	@Override
+	public Integer numeroComentarios(Integer id) throws Exception {
+		return creadorRepository.numeroComentarios(id);
+	}
+
+	@Transactional(readOnly = true)
+	@Override
+	public Integer numeroSeguidores(Integer id) throws Exception {
+		return creadorRepository.numeroSeguidores(id);
+	}
+
+	@Transactional(readOnly = true)
+	@Override
+	public Integer numeroSuscriptores(Integer id) throws Exception {
+		return creadorRepository.numeroSuscriptores(id);
+	}
+
 }

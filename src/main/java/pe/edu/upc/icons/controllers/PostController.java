@@ -47,7 +47,7 @@ public class PostController {
 		
 		Post post = new Post();
 		try {
-			Optional <Creador> creador = creadorService.findById(6);
+			Optional <Creador> creador = creadorService.findById(1);
 			post.setCreador(creador.get());
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block

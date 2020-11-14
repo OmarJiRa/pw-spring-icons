@@ -1,6 +1,6 @@
 package pe.edu.upc.icons.models.entities;
 
-import javax.persistence.Column;
+/*import javax.persistence.Column;*/
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -22,11 +22,11 @@ public class Suscripcion {
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
 	
-	@Column(name = "tipo", nullable = false)
+	/*@Column(name = "tipo", nullable = false)
 	private Integer tipo;
 	
 	@Column(name = "monto", nullable = false)
-	private Integer monto;
+	private Integer monto;*/
 
 	public Creador getCreador() {
 		return creador;
@@ -44,7 +44,7 @@ public class Suscripcion {
 		this.usuario = usuario;
 	}
 
-	public Integer getTipo() {
+	/*public Integer getTipo() {
 		return tipo;
 	}
 
@@ -58,6 +58,6 @@ public class Suscripcion {
 
 	public void setMonto(Integer monto) {
 		this.monto = monto;
-	}
+	}*/
 	
 }

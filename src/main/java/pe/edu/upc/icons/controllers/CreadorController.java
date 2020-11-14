@@ -35,7 +35,6 @@ public class CreadorController {
 	private UsuarioService usuarioService;
 	
 	
-	
 	@GetMapping
 	public String inicio(Model model) {
 		Creador creador = new Creador();
@@ -85,4 +84,28 @@ public class CreadorController {
 		
 		return "redirect:/creadores";
 		}
+	
+	@GetMapping("estadisticas-{id}")
+	public String estadisticas(@PathVariable("id") Integer id, Model model) {
+		
+		try {
+			Integer reporteComentario = creadorService.numeroComentarios(id);
+			Integer reporteMeGusta = creadorService.numeroMeGusta(id);
+			Integer reporteSeguidores = creadorService.numeroSeguidores(id);
+			Integer reporteSuscriptores = creadorService.numeroSuscriptores(id);
+
+			model.addAttribute("reporteComentario", reporteComentario);
+			model.addAttribute("reporteMeGusta", reporteMeGusta);
+			model.addAttribute("reporteSuscriptores", reporteSuscriptores);
+			model.addAttribute("reporteSeguidores", reporteSeguidores);
+			
+			return "creadores/estadisticas";
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+		}
+		return "redirect:/creadores";
+		
+	}
 }

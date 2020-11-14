@@ -54,6 +54,7 @@
 
 				<form th:action="@{/creadores/seguir}" th:object="${creador}" method="post"><button type="submit" class="btn btn-primary" style="width: 120px;">Seguir</button></form>
 				<button type="button" class="btn btn-success" style="width: 120px;">Suscribirse</button>
+				<a  th:href="@{'/creadores/estadisticas' + '-' + ${creador.id}}" class="btn btn-secondary" style="width: 120px;"> Estadisticas </a>
 			</div>
 			<div style="margin-top: 40px;">
 				<ul id="list-posts">
@@ -90,8 +91,6 @@
 				</ul>
 			</div>
 		</div>
-
-
 	</div>
 
 	<footer th:fragment="footer">
