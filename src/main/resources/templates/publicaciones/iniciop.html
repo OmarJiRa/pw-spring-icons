@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout/layout :: head"></head>
-<body style="background-color:#F0F8FF;"> <!-- style="background-color:yellow;" -->
+<body class="bg-light">
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="#"> <img
@@ -32,7 +32,7 @@
 					<i class="icon ion-md-help"></i>
 				</button>
 				<button class="btn btn-danger my-2 my-sm-0" type="submit">Cerrar
-					sesión</button>
+					sesion</button>
 			</form>
 		</div>
 	</nav>
@@ -53,19 +53,17 @@
 					class="d-block text-light p-3 border-0"><i
 					class="icon ion-md-person lead mr-2"></i> Perfil</a> <a href="#"
 					class="d-block text-light p-3 border-0"> <i
-					class="icon ion-md-settings lead mr-2"></i> Configuración
+					class="icon ion-md-settings lead mr-2"></i> Configuracion
 				</a>
 			</div>
 		</div>
 	
-	<section class="container-fluid">
+	<div class="container-fluid">
 
-		<h1 class="text-center" style="color:blue;">BIENVENIDO A LA COMUNIDAD </h1>
-
-		<h1>Publicaciones:</h1>
+		<h1 class="text-center" style="color:blue;">PUBLICACIONES </h1>
 
 	    	<!-- Crear un formulario, ingresar data y enviarlo al controller -->
-		<span th:text="'Registrar Publicación: '"></span>
+		<span th:text="'Registrar Publicacion: '"></span>
 		<form th:action="@{/publicaciones/save}" th:object="${comunidadPost}"
 			method="post">
 			<div class="row">
@@ -96,13 +94,13 @@
 			<thead class="thead-dark">
 				<tr>
 					<th scope="col">#</th>
-					<th class="text-center" scope="col">Nombre de la publicación</th>
-					<th class="text-center" scope="col">Descripción</th>
+					<th class="text-center" scope="col">Nombre de la publicacion</th>
+					<th class="text-center" scope="col">Descripcion</th>
 					<th class="text-center" scope="col">Creador</th>
-					<th class="text-center" scope="col">Fecha Creación</th>
+					<th class="text-center" scope="col">Fecha Creacion</th>
 					<th class="text-center" scope="col">Editar Post</th>
 					<th class="text-center" scope="col">Eliminar Post</th>
-					<th class="text-center" scope="col">Ver más</th>
+					<th class="text-center" scope="col">Ver mas</th>
 					<th class="text-center" scope="col">Ver Comentarios</th>
 				</tr>
 			</thead>
@@ -113,19 +111,18 @@
 					<td class="text-center" th:text="${comunidadPost.descripcion}"></td>
 					<td class="text-center" th:text="${comunidadPost.creador}"></td>
 					<td class="text-center" th:text="${comunidadPost.fechaCreacion}"></td>
-					<td><a th:href="@{'/publicaciones/view-' + ${comunidadPost.id}}"> </a> 
+					<td class="text-center"><a th:href="@{'/publicaciones/view-' + ${comunidadPost.id}}"> </a> 
 					<a th:href="@{/publicaciones/editar/}+${comunidadPost.id}" class="btn btn-warning"><i class="fas fa-edit"></i>Editar </a></td>
-					<td><a th:href="@{/publicaciones/eliminar/}+${comunidadPost.id}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Eliminar </a></td>
-					<td><a th:href="@{'/publicaciones/' + ${comunidadPost.tag} + '-' + ${comunidadPost.id} + '/p'}" class="btn btn-primary">Ver Detalles</a></td>
-					<td><a th:href="@{'/publicaciones/view-' + ${comunidadPost.id}}" class="btn btn-info">Ver Comentarios</a></td>
+					<td class="text-center"><a th:href="@{/publicaciones/eliminar/}+${comunidadPost.id}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Eliminar </a></td>
+					<td class="text-center"><a th:href="@{'/publicaciones/' + ${comunidadPost.tag} + '-' + ${comunidadPost.id} + '/p'}" class="btn btn-primary">Ver Detalles</a></td>
+					<td class="text-center"><a th:href="@{'/publicaciones/view-' + ${comunidadPost.id}}" class="btn btn-info">Ver Comentarios</a></td>
 				</tr>
 			</tbody>
 		</table>
 
-	</section>
+	</div>
 	</div>
 
-	<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
-	<script th:src="@{/js/bootstrap..min.js}"></script>
+	<footer th:replace="layout/layout :: footer"></footer>
 </body>
 </html>
