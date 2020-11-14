@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pe.edu.upc.icons.models.entities.ComentarioCreadorPost;
-import pe.edu.upc.icons.models.entities.CreadorPost;
 import pe.edu.upc.icons.services.ComentarioCreadorPostService;
-import pe.edu.upc.icons.services.CreadorPostService;
 
 @Controller
 @RequestMapping("/vercomentarios")

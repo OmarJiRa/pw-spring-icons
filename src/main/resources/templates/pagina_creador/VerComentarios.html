@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="es"
-	xmlns:th="http://www.thymeleaf.org">
-<head>
- 	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
-    <link rel="stylesheet" th:href="@{/css/solid.min.css}">
-    <link rel="stylesheet" th:href="@{/css/market.css}">
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
 <title>Ver comentarios</title>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<body class="bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="#"> <img
 			th:src="@{/images/IconsLogo.png}" width="30" height="30"
 			class="d-inline-block align-top" alt="" loading="lazy"> Icons
@@ -22,20 +15,37 @@
 			aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		
-		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li class="nav-item active"><a class="nav-link" href="#">Publicaciones Creador</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="#">Comunidades</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Mi perfil</a>
-				</li>
-
-			</ul>
-
+		<div>
+			<form class="">
+				<button type="submit" class="btn btn-warning">
+					<i class="icon ion-md-help"></i>
+				</button>
+				<button class="btn btn-danger my-2 my-sm-0" type="submit">Cerrar
+					sesion</button>
+			</form>
 		</div>
 	</nav>
 	
+	
+	<div class="d-flex" id="content-wrapper">
+	<div id="sidebar-container" class="bg-dark">
+	<div class="menu">
+				<a href="publicaciones" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-apps lead mr-2"></i> Publicaciones</a> <a
+					href="creadores" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-paper lead mr-2"></i> Creadores</a><a
+					href="comunidades" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-people lead mr-2"></i> Comunidades</a> <a
+					href="medios" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-card lead mr-2"></i> Medios de Pago</a> <a href="#"
+					class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-person lead mr-2"></i> Perfil</a> <a href="#"
+					class="d-block text-light p-3 border-0"> <i
+					class="icon ion-md-settings lead mr-2"></i> Configuracion
+				</a>
+			</div>
+		</div>
+	<div class="container-fluid">
 	<section class="container">
 		<h1 class="text-center" style="color:blue;">COMENTARIOS DE TUS PUBLICACIONES </h1>
 
@@ -45,9 +55,9 @@
 			<thead>
 				<tr>
 					<th scope="col">#</th>
-					<th scope="col">Descripción</th>
+					<th scope="col">Descripcion</th>
 					<th scope="col">Creador</th>
-					<th scope="col">Fecha Creación</th>
+					<th scope="col">Fecha Creacion</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -60,5 +70,7 @@
 			</tbody>
 		</table>
 	</section>
+	</div>
+	</div>
 </body>
 </html>
