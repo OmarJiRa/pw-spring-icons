@@ -36,10 +36,17 @@
 				</a>
 			</div>
 		</div>
-		<div class="container text-center"
-			style="margin-left: 50px; margin-right: 50px">
+		<div class="container text-center" style="margin-left: 50px; margin-right: 50px">
 
-			
+			&nbsp;
+			<h1>
+				<span th:text="${post.nombre}"></span>
+			</h1>
+			&nbsp;
+			<iframe width="950" height="600"
+				th:src="${post.link}"> </iframe>
+
+
 		</div>
 	</div>
 

@@ -24,65 +24,101 @@ import pe.edu.upc.icons.services.UsuarioService;
 @RequestMapping("/creadores")
 @SessionAttributes("creador")
 public class CreadorController {
-	
+
 	@Autowired
 	private CreadorService creadorService;
-	
+
 	@Autowired
 	private PostService postService;
-	
+
 	@Autowired
 	private UsuarioService usuarioService;
-	
-	
-	
+
 	@GetMapping
 	public String inicio(Model model) {
 		Creador creador = new Creador();
-		
+
 		try {
 			List<Creador> creadores = creadorService.findAll();
 			model.addAttribute("creadores", creadores);
 			model.addAttribute("creador", creador);
-		}
-		catch (Exception e){
-			e.printStackTrace();
-			System.err.println(e.getMessage());
-		}
-		
-		return "creadores/index";
-	}
-	
-	@GetMapping("{tag}-{id}")
-	public String view(@PathVariable("id") Integer id, Model model) {
-		
-		try {
-			Optional<Creador> optional = creadorService.findById(id);
-			List<Post> posts = postService.findByCreador(optional.get());
-			if(optional.isPresent()) {
-				model.addAttribute("creador", optional.get());
-				model.addAttribute("posts", posts);
-				return "creadores/view";
-			} 
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
-		return "redirect:/creadores";		
+
+		return "creadores/index";
 	}
-	
+
+	@GetMapping("{tag}-{id}")
+	public String view(@PathVariable("id") Integer id, Model model) {
+
+		try {
+			Optional<Creador> optional = creadorService.findById(id);
+			List<Post> posts = postService.findByCreador(optional.get());
+			if (optional.isPresent()) {
+				model.addAttribute("creador", optional.get());
+				model.addAttribute("posts", posts);
+				return "creadores/view";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+		}
+		return "redirect:/creadores";
+	}
+
 	@PostMapping("seguir")
 	public String seguir(@ModelAttribute("creador") Creador creador, SessionStatus status) {
 		try {
 			System.out.println("EL id es: " + creador.getId());
 			usuarioService.setSeguimiento(3, creador.getId());
 			status.setComplete();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+		}
+
+		return "redirect:/creadores";
+	}
+
+	@PostMapping("suscripcion")
+	public String suscripcion(@ModelAttribute("creador") Creador creador, SessionStatus status) {
+		try {
+			System.out.println("EL id es: " + creador.getId());
+			usuarioService.setSuscripcion(3, creador.getId());
+			status.setComplete();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+		}
+
+		return "redirect:/creadores";
+	}
+	
+	@GetMapping("estadisticas-{id}")
+	public String estadisticas(@PathVariable("id") Integer id, Model model) {
+		
+		try {
+			Integer reporteComentario = creadorService.numeroComentarios(id);
+			Integer reporteMeGusta = creadorService.numeroMeGusta(id);
+			Integer reporteSeguidores = creadorService.numeroSeguidores(id);
+			Integer reporteSuscriptores = creadorService.numeroSuscriptores(id);
+
+			model.addAttribute("reporteComentario", reporteComentario);
+			model.addAttribute("reporteMeGusta", reporteMeGusta);
+			model.addAttribute("reporteSuscriptores", reporteSuscriptores);
+			model.addAttribute("reporteSeguidores", reporteSeguidores);
+			
+			return "creadores/estadisticas";
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
-		
 		return "redirect:/creadores";
-		}
+		
+	}
 }

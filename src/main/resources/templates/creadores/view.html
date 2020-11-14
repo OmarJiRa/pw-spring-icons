@@ -53,7 +53,8 @@
 			<div class="text-center" style="margin-top: 10px;">
 
 				<form th:action="@{/creadores/seguir}" th:object="${creador}" method="post"><button type="submit" class="btn btn-primary" style="width: 120px;">Seguir</button></form>
-				<button type="button" class="btn btn-success" style="width: 120px;">Suscribirse</button>
+				<form th:action="@{/creadores/suscripcion}" th:object="${creador}" method="post"><button type="submit" class="btn btn-success" style="width: 120px;">Suscribirse</button></form>
+				<a  th:href="@{'/creadores/estadisticas' + '-' + ${creador.id}}" class="btn btn-secondary" style="width: 120px;"> Estadisticas </a>
 			</div>
 			<div style="margin-top: 40px;">
 				<ul id="list-posts">
@@ -63,7 +64,7 @@
 							style="max-width: 1200px; list-style: none;">
 							<div class="row no-gutters">
 								<div class="col-md-3">
-									<img src="/images/creadores/brunito.jpg" class="card-responsive"
+									<img th:src="${post.thumbnail}" class="card-responsive"
 										style="width: 250px;">
 								</div>
 								<div class="col-md-8">

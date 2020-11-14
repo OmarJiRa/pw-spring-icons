@@ -19,7 +19,7 @@
 	<header th:fragment="header">
 
 		<nav class="navbar navbar-expand-lg navbar-custom">
-			<div class="container">
+			<div class="container ">
 
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<img th:src="@{/images/Frame1.svg}" width="150" height="60"
@@ -65,42 +65,58 @@
 				</a>
 			</div>
 		</div>
-		<div class="container" style="margin-left: 50px; margin-right: 50px">
+		<div class="container">
+			<section>
 
-			&nbsp;
-			<h1 style="margin-bottom: 20px">Publicaciones</h1>
-
-			<ul id="list-posts">
-				<li th:each="post : ${posts}">
-
-					<div class="card mb-3" style="max-width: 1200px; list-style: none;">
-						<div class="row no-gutters">
-							<div class="col-md-3">
-								<img th:src="${post.thumbnail}" class="card-responsive"
-									style="width: 250px;">
-							</div>
-							<div class="col-md-8">
-								<div class="card-body">
-									<p class="card-text">
-										<small class="text-muted" th:text="${post.fechaPublicacion}"></small>
-									</p>
-									<h5 class="card-title" th:text="${post.nombre}"></h5>
-									<p class="card-text" th:text="${post.descripcion}"></p>
-
-									<h5 class="card-text">
-										<small class="card-text"
-											th:text="'Created by ' + ${post.creador.getNombresApellidos()}"></small>
-										&nbsp;
-									</h5>
-									<a th:href="@{'/posts/view-' + ${post.id}}"
-										class="btn btn-primary text-right">Ver más</a>
-								</div>
-							</div>
-						</div>
+				&nbsp;
+				<h1>Reacciones</h1>
+				
+				&nbsp;
+				<div class="card">
+					<h5 class="card-header">Total me gusta</h5>
+					<div class="card-body">
+					
+					<p class="card-text" th:text="'Número total me gusta: '+ ${reporteMeGusta}" > </p>
 					</div>
+				</div>
+				
+				&nbsp;
+				<div class="card">
+					<h5 class="card-header">Total comentarios</h5>
+					<div class="card-body">
+					
+					<p class="card-text" th:text="'Número total de comentarios: '+ ${reporteComentario}" > </p>
+					</div>
+				</div>
+				
+				&nbsp;
+				<div class="card">
+					<h5 class="card-header">Total de seguidores</h5>
+					<div class="card-body">
+					
+					<p class="card-text" th:text="'Número total de seguidores: '+ ${reporteSeguidores}" > </p>
+					</div>
+				</div>
+				
+				&nbsp;
+				<div class="card">
+					<h5 class="card-header">Total de suscriptores</h5>
+					<div class="card-body">
+					
+					<p class="card-text" th:text="'Número total de suscriptores: '+ ${reporteSuscriptores}" > </p>
+					</div>
+				</div>
+				
+				&nbsp;
+				<div class="card">
+					<h5 class="card-header">Ganancias</h5>
+					<div class="card-body">
+					
+					<p class="card-text" th:text="'Monto de ganancias: '+ ${reporteSuscriptores}*5 + ' $'" > </p>
+					</div>
+				</div>
 
-				</li>
-			</ul>
+			</section>
 		</div>
 	</div>
 
