@@ -1,18 +1,9 @@
 <!doctype html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-<link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
-<link rel="stylesheet" th:href="@{/css/solid.min.css}">
-<link rel="stylesheet" th:href="@{/css/market.css}">
-<title>Publicaciones</title>
-</head>
+<head th:replace="layout/layout :: head"></head>
 <body style="background-color:#F0F8FF;"> <!-- style="background-color:yellow;" -->
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="#"> <img
 			th:src="@{/images/IconsLogo.png}" width="30" height="30"
 			class="d-inline-block align-top" alt="" loading="lazy"> Icons
@@ -32,22 +23,49 @@
 
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li class="nav-item active"><a class="nav-link" href="#">Comunidades</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Publicaciones</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Mi perfil</a></li>
+				<li class="nav-item active"></li>
 			</ul>
-
+		</div>
+		<div>
+			<form class="">
+				<button type="submit" class="btn btn-warning">
+					<i class="icon ion-md-help"></i>
+				</button>
+				<button class="btn btn-danger my-2 my-sm-0" type="submit">Cerrar
+					sesi髇</button>
+			</form>
 		</div>
 	</nav>
+	
+	<div class="d-flex" id="content-wrapper">
+	
+	<div id="sidebar-container" class="bg-dark">
 
-	<section class="container">
+			<div class="menu">
+				<a href="publicaciones" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-apps lead mr-2"></i> Publicaciones</a> <a
+					href="creadores" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-paper lead mr-2"></i> Creadores</a><a
+					href="comunidades" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-people lead mr-2"></i> Comunidades</a> <a
+					href="medios" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-card lead mr-2"></i> Medios de Pago</a> <a href="#"
+					class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-person lead mr-2"></i> Perfil</a> <a href="#"
+					class="d-block text-light p-3 border-0"> <i
+					class="icon ion-md-settings lead mr-2"></i> Configuraci髇
+				</a>
+			</div>
+		</div>
+	
+	<section class="container-fluid">
 
 		<h1 class="text-center" style="color:blue;">BIENVENIDO A LA COMUNIDAD </h1>
 
 		<h1>Publicaciones:</h1>
 
 	    	<!-- Crear un formulario, ingresar data y enviarlo al controller -->
-		<span th:text="'Registrar Publicaci贸n: '"></span>
+		<span th:text="'Registrar Publicaci髇: '"></span>
 		<form th:action="@{/publicaciones/save}" th:object="${comunidadPost}"
 			method="post">
 			<div class="row">
@@ -78,13 +96,13 @@
 			<thead class="thead-dark">
 				<tr>
 					<th scope="col">#</th>
-					<th class="text-center" scope="col">Nombre de la publicaci贸n</th>
-					<th class="text-center" scope="col">Descripci贸n</th>
+					<th class="text-center" scope="col">Nombre de la publicaci髇</th>
+					<th class="text-center" scope="col">Descripci髇</th>
 					<th class="text-center" scope="col">Creador</th>
-					<th class="text-center" scope="col">Fecha Creaci贸n</th>
+					<th class="text-center" scope="col">Fecha Creaci髇</th>
 					<th class="text-center" scope="col">Editar Post</th>
 					<th class="text-center" scope="col">Eliminar Post</th>
-					<th class="text-center" scope="col">Ver m谩s</th>
+					<th class="text-center" scope="col">Ver m醩</th>
 					<th class="text-center" scope="col">Ver Comentarios</th>
 				</tr>
 			</thead>
@@ -105,6 +123,7 @@
 		</table>
 
 	</section>
+	</div>
 
 	<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
 	<script th:src="@{/js/bootstrap..min.js}"></script>

@@ -19,4 +19,9 @@ public class IndexController {
 		model.addAttribute("comunidad", comunidad);
 		return "index";
 	}
+
+	@GetMapping("layout")
+	public String layout() {
+		return "layout/layout";
+	}
 }
