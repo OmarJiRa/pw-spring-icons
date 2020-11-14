@@ -84,12 +84,6 @@ public class ComunidadPostController {
 		return "/publicaciones/edit";
 	}
 	
-	/*@GetMapping("/editar/{id}")
-	public String editar(@PathVariable int id, Model model) {
-		Optional<ComunidadPost>comunidadPostService
-	}*/
-	
-	
     //  /publicaciones/delete
 	@GetMapping("/eliminar/{id}")
 	public String delete(@PathVariable("id") Integer id,  Model model) {
@@ -130,23 +124,7 @@ public class ComunidadPostController {
 
 		try {
 			Optional<ComunidadPost> optional = comunidadPostService.findById(id);
-			if(optional.isPresent()) {
-				
-				/*Tienda tienda = new Tienda();
-				
-				Pedido pedido = new Pedido();
-				pedido.setTienda(tienda);
-				
-				DetallePedido detallePedido = new DetallePedido();
-				detallePedido.setCantidad(1);
-				detallePedido.setDescuento(0F);
-				detallePedido.setPedido( pedido );
-				detallePedido.setProducto( optional.get() );
-				detallePedido.setSubTotal(0F);
-				
-				model.addAttribute("tienda", tienda);
-				model.addAttribute("pedido", pedido);
-				model.addAttribute("detallePedido", detallePedido);	*/			
+			if(optional.isPresent()) {		
 				model.addAttribute("comunidadPost", comunidadPost);	// Search
 				model.addAttribute("comunidadPostDetalle", optional.get());
 				return "/publicaciones/viewp-publicacion";
