@@ -96,7 +96,7 @@
 					<td class="text-center" th:text="${comunidadPost.creador}"></td>
 					<td class="text-center" th:text="${comunidadPost.fechaCreacion}"></td>
 					<td><a th:href="@{'/publicaciones/view-' + ${comunidadPost.id}}"> </a> 
-					<a th:href="@{/publicaciones/editar/}+${comunidadPost.id}" class="btn btn-opacity-light mr-1"><i class="fas fa-edit"></i>Editar </a></td>
+					<a th:href="@{/publicaciones/editar/}+${comunidadPost.id}" class="btn btn-warning"><i class="fas fa-edit"></i>Editar </a></td>
 					<td><a th:href="@{/publicaciones/eliminar/}+${comunidadPost.id}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Eliminar </a></td>
 					<td><a th:href="@{'/publicaciones/' + ${comunidadPost.tag} + '-' + ${comunidadPost.id} + '/p'}" class="btn btn-primary">Ver Detalles</a></td>
 					<td><a th:href="@{'/publicaciones/view-' + ${comunidadPost.id}}" class="btn btn-info">Ver Comentarios</a></td>
