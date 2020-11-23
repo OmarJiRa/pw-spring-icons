@@ -10,5 +10,4 @@ import pe.edu.upc.icons.models.entities.CreadorPost;
 @Repository
 public interface CreadorPostRepository extends JpaRepository<CreadorPost, Integer>{
 	List<CreadorPost> findByNombreContaining(String nombre) throws Exception;
-
 }
