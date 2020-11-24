@@ -60,7 +60,7 @@
 
 		<div class="container-fluid">
 
-			<h1 class="text-center" style="color: blue;">COMUNIDADES</h1>
+			<h1 class="text-center" style="color: black;">COMUNIDADES</h1>
 
 			<!-- Crear un formulario, ingresar data y enviarlo al controller -->
 			<span th:text="'Registrar Comunidad: '"></span>
@@ -92,7 +92,36 @@
 				</p>
 			</form>
 
-			<table class="table table-striped">
+			<ul id="list-card">
+				<li th:each="comunidad : ${comunidades}">
+					<div class="card text-white bg-dark mb-3" style="width: 18rem;">
+					<div> </div>
+					<h5 class="card-text text-center" th:text="${comunidad.nombre}"></h5>
+						<img id="view-image" th:src="@{${comunidad.urlImage}}" class="img-thumbnail">
+						<div class="card-body">
+							
+							<p class="card-text text-center" th:text="${comunidad.descripcion}"></p>
+							<p class="card-text" th:text="'Tema: ' +${comunidad.tema}"></p>
+							<p class="card-text text-right" th:text="${comunidad.fechaCreacion}"></p>
+							<p class="card-text text-center">
+								<a th:href="@{'/comunidades/' + ${comunidad.id}}" 
+									class="btn btn-primary"><i class="fas fa-door-open" ></i> Unirse
+								</a>
+								<!--  <a th:href="@{'/comunidades/' + ${comunidad.id}}"
+									class="btn btn-secondary"><i class="fas fa-list"></i> Ver Detalles
+								</a>
+								-->
+								<a th:href="@{/comunidades/eliminar/}+${comunidad.id}"
+									class="btn btn-danger"><i class="fas fa-trash-alt" ></i> Eliminar
+								</a>
+							</p>
+
+						</div>
+					</div>
+				</li>
+			</ul>
+
+			<!-- <table class="table table-striped">
 				<thead class="thead-dark">
 					<tr>
 						<th class="text-center" scope="col">#</th>
@@ -118,7 +147,7 @@
 							class="btn btn-danger"><i class="fas fa-trash-alt"></i>Eliminar</a></td>
 					</tr>
 				</tbody>
-			</table>
+			</table> -->
 
 		</div>
 

@@ -34,6 +34,17 @@ public class Comunidad {
 	@Temporal(TemporalType.DATE)
 	private Date fechaCreacion;
 	
+	@Column(name = "url_image", length = 100)
+	private String urlImage;
+	
+	public String getUrlImage() {
+		return urlImage;
+	}
+
+	public void setUrlImage(String urlImage) {
+		this.urlImage = urlImage;
+	}
+
 	@OneToMany(mappedBy = "comunidad")
 	private List<ComunidadUsuario> comunidadUsuarios;
 

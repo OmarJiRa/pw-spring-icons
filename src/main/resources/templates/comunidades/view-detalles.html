@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body class="bg-light">
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#"> <img
+			th:src="@{/images/IconsLogo.png}" width="30" height="30"
+			class="d-inline-block align-top" alt="" loading="lazy"> Icons
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarTogglerDemo02"
+			aria-controls="navbarTogglerDemo02" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<form th:action="@{/comunidades/search_tema}" th:object="${comunidad}"
+			method="post" class="form-inline my-2 my-lg-0">
+			<input th:field="*{tema}" class="form-control mr-sm-2" type="search"
+				placeholder="Buscar por tema">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+		</form>
+
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li th:href="@{'/comunidades-' + ${comunidad.id}}"
+					class="nav-item active"></li>
+			</ul>
+		</div>
+		<div>
+			<form class="">
+				<button type="submit" class="btn btn-warning">
+					<i class="icon ion-md-help"></i>
+				</button>
+				<button class="btn btn-danger my-2 my-sm-0" type="submit">Cerrar
+					sesion</button>
+			</form>
+		</div>
+	</nav>
+	
+	<div class="d-flex" id="content-wrapper">
+	
+		<div id="sidebar-container" class="bg-dark">
+
+			<div class="menu">
+				<a href="publicaciones" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-apps lead mr-2"></i> Publicaciones</a> <a
+					href="creadores" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-paper lead mr-2"></i> Creadores</a><a
+					href="comunidades" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-people lead mr-2"></i> Comunidades</a> <a
+					href="medios" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-card lead mr-2"></i> Medios de Pago</a> <a href="#"
+					class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-person lead mr-2"></i> Perfil</a> <a href="#"
+					class="d-block text-light p-3 border-0"> <i
+					class="icon ion-md-settings lead mr-2"></i> Configuración
+				</a>
+			</div>
+		</div>
+	
+	<div class="container-fluid">
+
+	<nav aria-label="breadcrumb">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item">Home</li>
+	    <li class="breadcrumb-item"><span th:text="Comunidad"></span></li>
+	    <!-- <li class="breadcrumb-item"><span th:text="Publicaciones"></span></li> -->
+	    <li class="breadcrumb-item active" aria-current="page"><span th:text="${comunidadDetalle.nombre}"></span></li>
+	  </ol>
+	</nav>
+	
+	<div id="view-card">
+		<div >
+			<img id="view-image" th:src="@{${comunidadDetalle.urlImage}}" class="img-fluid" alt="Responsive image">
+		</div>
+		<div class="card text-white bg-dark mb-3">
+		  <div class="card-header">
+		    <span class="text-center" th:text="${comunidadDetalle.nombre}"></span>
+		  </div>
+		  <div class="card-body">
+		    <!--<h5 class="card-title title-center"><span class="text-center " th:text="${comunidadPostDetalle.descripcion}"></span></h5>-->
+		    <h5 class="card-text text-center" th:text="${comunidadDetalle.descripcion}"></h5>
+		    <p class="card-text" th:text="${comunidadDetalle.tema}"></p>
+		    <p class="card-text text-right" th:text="${comunidadDetalle.fechaCreacion}"></p>
+		    <p class="card-text text-center">
+		    <a th:href="@{'/comunidades/view-' + ${comunidad.id}}" 
+				class="btn btn-primary"><i class="fas fa-door-open" ></i> Ver publicaciones
+			</a>
+			</p>
+		  </div>
+		</div>
+	</div>
+
+	</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

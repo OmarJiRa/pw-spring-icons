@@ -109,4 +109,22 @@ public class ComunidadController {
 		}
 		return "/comunidades/view";
 	}
+	
+	@GetMapping("{id}")
+	public String viewComunidad(@ModelAttribute("comunidad") Comunidad comunidad,
+			@PathVariable("id") Integer id, Model model ) {
+
+		try {
+			Optional<Comunidad> optional = comunidadService.findById(id);
+			if(optional.isPresent()) {		
+				model.addAttribute("comunidad", comunidad);	// Search
+				model.addAttribute("comunidadDetalle", optional.get());
+				return "/comunidades/view-detalles";
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:/comunidades";
+	}
 }
