@@ -70,13 +70,15 @@
 	  </ol>
 	</nav>
 	
+	<h1 class="text-center text-transform" style="color: black;" th:text="'BIENVENIDO A LA COMINIDAD DE: ' + ${comunidadDetalle.nombre}"></h1>
+	
 	<div id="view-card">
 		<div >
 			<img id="view-image" th:src="@{${comunidadDetalle.urlImage}}" class="img-fluid" alt="Responsive image">
 		</div>
 		<div class="card text-white bg-dark mb-3">
-		  <div class="card-header">
-		    <span class="text-center" th:text="${comunidadDetalle.nombre}"></span>
+		  <div class="card-header text-center">
+		    <span class="card-text text-center" th:text="${comunidadDetalle.nombre}"></span>
 		  </div>
 		  <div class="card-body">
 		    <!--<h5 class="card-title title-center"><span class="text-center " th:text="${comunidadPostDetalle.descripcion}"></span></h5>-->
