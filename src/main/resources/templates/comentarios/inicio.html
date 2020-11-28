@@ -80,7 +80,7 @@
 					</button>
 				</p>
 			</form>
-
+<!-- 
 			<table class="table table-striped">
 				<thead class="thead-dark">
 					<tr>
@@ -99,16 +99,21 @@
 					</tr>
 				</tbody>
 			</table>
-
-			<div class="card border-dark mb-3" style="max-width: 18rem;">
-				<div class="card-header bg-transparent border-dark" th:text="${comentario.creador}"></div>
-				<div class="card-body text-dark">
-					<h5 class="card-title">Success card title</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
-				</div>
-				<div class="card-footer bg-transparent border-dark">Footer</div>
-			</div>
+ -->
+ 
+			<ul id="list-card" style="flex-flow: row wrap">
+				<li th:each="comentario: ${comentarios}">
+					<div class="card border-dark mb-3" style="max-width: 18rem;">
+						<div class="card-header bg-transparent border-dark"
+							th:text="${comentario.creador}"></div>
+						<div class="card-body text-dark">
+							<p class="card-text text-center"
+								th:text="${comentario.descripcion}">.</p>
+						</div>
+						<div class="card-footer bg-transparent border-dark text-right" th:text="${comentario.fechaCreacion}">.</div>
+					</div>
+				</li>
+			</ul>
 
 		</div>
 

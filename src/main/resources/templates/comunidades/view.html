@@ -68,16 +68,19 @@
 			<ul id="list-card">
 				<li th:each="comunidad : ${comunidades}">
 
-					<div class="card" style="width: 18rem;">
-						<img alt="imagen" th:src="@{/images/IconsLogo.png}">
+					<div class="card text-white bg-dark">
+						<img id="view-image" th:src="@{${comunidad.urlImage}}" class="img-thumbnail">
 						<div class="card-body">
-							<h5 class="card-title">
+							<h5 class="card-title text-center">
 								<span th:text="${comunidad.nombre}"></span>
 							</h5>
 							<p class="card-text" th:text="${comunidad.tema}"></p>
-							<p class="card-text" th:text="${comunidad.fechaCreacion}"></p>
-							<a th:href="@{'/comunidades/view-' + ${comunidad.id}}"
-								class="card-link">Ver publicaciones de la comunidad</a>
+							<p class="card-text text-right" th:text="${comunidad.fechaCreacion}"></p>
+							<p class="card-text text-center">
+								<a th:href="@{'/comunidades/' + ${comunidad.id}}"
+									class="btn btn-primary"><i class="fas fa-door-open"></i>
+									Unirse </a>
+							</p>
 						</div>
 					</div>
 				</li>
