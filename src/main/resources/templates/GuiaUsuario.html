@@ -5,10 +5,10 @@
 </head>
 <body class="bg-light">
 	
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<nav class="navbar navbar-expand-lg navbar-custom">
 		<a class="navbar-brand" href="#"> <img
-			th:src="@{/images/IconsLogo.png}" width="30" height="30"
-			class="d-inline-block align-top" alt="" loading="lazy"> Icons
+			th:src="@{/images/IconsLogo.svg}" width="150" height="60"
+			class="d-inline-block align-top" alt="" loading="lazy">
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarTogglerDemo02"
@@ -31,9 +31,7 @@
 		</div>
 		<div>
 			<form class="">
-				<button type="submit" class="btn btn-warning">
-					<i class="icon ion-md-help"></i>
-				</button>
+				<a href="/guiausuario" class="btn btn-warning" role="button" aria-pressed="true"><i class="icon ion-md-help"></i></a>
 				<button class="btn btn-danger my-2 my-sm-0" type="submit">Cerrar
 					sesion</button>
 			</form>
@@ -64,47 +62,72 @@
 <div class="container-fluid">
 <section class="container">
 
-	<font size="7" face="arial" color="blue"> Guia del correcto uso de la aplicacion Icons </font> <p> <p>
-	<font size="4"><b> En esta guia se le informara al creador de contenido y usuario acerca de las funcionalidades que presenta la aplicacion Icons </b> </font> <p> 
-	<div class="p-3 mb-2 bg-primary text-white">Como publicar contenido</div> <p> 
-	<font size="4" face="georgia"> Si se encuentra en su perfil de creador de contenido, podra acceder a la funcion de publicar el contenido de su preferencia, ya sea texto o imagen, con nuestro apartado "Publicaciones". </font> <p> 
-	<font size="4" face="georgia"> Cuando haya ingresado al apartado, tendra la opcion de registrar, editar o eliminar una publicacion. Use estas opciones sabiamente, todos los usuarios de Icons podran ver el contenido que suba. </font> <p> 
-	<center>
-	<img src="/images/publicarpost.png" title="publicar post" width="300px" height="300px">
-	</center>
 	
-	<p> </p>
-	<div class="p-3 mb-2 bg-success text-white">Como generar ganancias con Icons</div> <p> 
-	<font size="4" face="georgia"> Si se encuentra en su perfil de creador de contenido, podra acceder a la funcion de ganar dinero mediante las suscripciones de los usuarios y supervizar el dinero ganado cuando quiera. </font> <p> 
-	<font size="4" face="georgia"> Para supervisar su dinero, puede acceder al boton de "Ver ganancias" en el perfil de creador de contenido. Recuerde que los usuarios al apoyarlo esperan que tu les brindes contenido exclusivo. </font> <p> 
-	<center>
-	<img src="/images/generarganancias.jpg" title="generar ganancias" width="500px" height="300px">
-	</center>
-	<p> </p>
+	<center><font size="7" face="arial" color="blue"> Guia del correcto uso de la aplicacion Icons </font></center> <p> <p>
+	<center><font size="4"><b> En esta guia se le informara al creador de contenido y usuario acerca de las funcionalidades que presenta la aplicacion Icons </b> </font></center> <p> 
 	
-	<div class="p-3 mb-2 bg-danger text-white">Como interactuar con una comunidad</div> <p> 
-	<font size="4" face="georgia"> Si se encuentra en su perfil de usuario, podra acceder a la funcion de crear y unirse a una comunidad en el apartado de "Comunidades". </font> <p> 
-	<font size="4" face="georgia"> Cuando haya ingresado al apartado, tendra la opcion de registrar y unirse a una comunidad. Puede llamar a sus amigos para que usen "Icons" e interactuar con ellos mediante publicaciones y comentarios.</font> <p>
-	<center>
-	<img src="/images/comunidad.jpg" title="comunidad" width="500px" height="300px">
-	</center>
-	<p> </p>
-	 
-	<div class="p-3 mb-2 bg-warning text-dark">Como personalizar tu perfil </div> <p> 
-	<font size="4" face="georgia"> Si se encuentra en su perfil de usuario, podra acceder a la funcion de personalizar su perfil a su gusto con el apartado del perfil. </font> <p> 
-	<font size="4" face="georgia"> Cuando haya ingresado al apartado, tendra la opcion de editar datos de su perfil para que muchos mas usuarios de "Icons" puedan reconocerlo. </font> <p> 
-	<center>
-	<img src="/images/perfilusuario.jpg" title="personalizar perfil" width="400px" height="300px">
-	</center>
-	<p> </p>
 	
-	<div class="p-3 mb-2 bg-info text-white">Como funciona nuestro motor de busqueda </div> <p> 
-	<font size="4" face="georgia"> Para acceder a nuestro motor de busqueda es necesario saber que comunidad o post buscara y alojarse en la parte superior de la barra de navegacion. </font> <p> 
-	<font size="4" face="georgia"> Nuestro motor de busqueda funciona con palabras clave, frases, letras y el mismo nombre del post o comunidad. Puede buscar lo que desee cuando quiera. </font> <p> 
-	<center>
-	<img src="/images/motorbusqueda.png" title="motor de busqueda" width="500px" height="300px">
-	</center>
-	<p> </p>
+<div class="card-group">
+  <div class="card">
+    <img class="card-img-top" src="/images/publicarpost.png" alt="Card image cap"  height="250px">
+    <div class="card-body">
+      <center><h5 class="card-title">Como publicar contenido</h5></center>
+      <p class="card-text">Si se encuentra en su perfil de creador de contenido, podra acceder a la funcion de publicar el contenido de su preferencia, ya sea texto o imagen, con nuestro apartado "Publicaciones".
+      Cuando haya ingresado al apartado, tendra la opcion de registrar, editar o eliminar una publicacion. Use estas opciones sabiamente, todos los usuarios de Icons podran ver el contenido que suba. </p>
+      <p class="card-text"><small class="text-muted">Icons</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="/images/generarganancias.jpg" alt="Card image cap" height="250px">
+    <div class="card-body">
+      <center><h5 class="card-title">Como generar ganancias con Icons</h5></center>
+      <p class="card-text">Si se encuentra en su perfil de creador de contenido, podra acceder a la funcion de ganar dinero mediante las suscripciones de los usuarios y supervizar el dinero ganado cuando quiera.
+      Para supervisar su dinero, puede acceder al boton de "Ver ganancias" en el perfil de creador de contenido. Recuerde que los usuarios al apoyarlo esperan que tu les brindes contenido exclusivo.</p>
+      <p class="card-text"><small class="text-muted">Icons</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="/images/comunidad.jpg" alt="Card image cap" height="250px">
+    <div class="card-body">
+      <center><h5 class="card-title">Como interactuar con una comunidad</h5></center>
+      <p class="card-text">Si se encuentra en su perfil de usuario, podra acceder a la funcion de crear y unirse a una comunidad en el apartado de "Comunidades".
+      Cuando haya ingresado al apartado, tendra la opcion de registrar y unirse a una comunidad. Puede llamar a sus amigos para que usen "Icons" e interactuar con ellos mediante publicaciones y comentarios.</p>
+      <p class="card-text"><small class="text-muted">Icons</small></p>
+    </div>
+  </div>
+</div>
+
+
+<div class="card-group">
+  <div class="card">
+    <img class="card-img-top" src="/images/perfilusuario.jpg" alt="Card image cap"  height="250px">
+    <div class="card-body">
+      <center><h5 class="card-title">Como personalizar tu perfil</h5></center>
+      <p class="card-text">Si se encuentra en su perfil de usuario, podra acceder a la funcion de personalizar su perfil a su gusto con el apartado del perfil.
+      Cuando haya ingresado al apartado, tendra la opcion de editar datos de su perfil para que muchos mas usuarios de "Icons" puedan reconocerlo.  </p>
+      <p class="card-text"><small class="text-muted">Icons</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="/images/motorbusqueda.png" alt="Card image cap" height="250px">
+    <div class="card-body">
+      <center><h5 class="card-title">Como funciona nuestro motor de busqueda</h5></center>
+      <p class="card-text">Si se encuentra en su perfil de creador de contenido, podra acceder a la funcion de ganar dinero mediante las suscripciones de los usuarios y supervizar el dinero ganado cuando quiera.
+     Nuestro motor de busqueda funciona con palabras clave, frases, letras y el mismo nombre del post o comunidad. Puede buscar lo que desee cuando quiera.</p>
+      <p class="card-text"><small class="text-muted">Icons</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="/images/seguircreador.jpg" alt="Card image cap" height="250px">
+    <div class="card-body">
+      <center><h5 class="card-title">Como disfrutar del contenido de creador</h5></center>
+      <p class="card-text">Para poder disfrutar del contenido de los creadores deberas de seguir o suscribir a un creador de su preferencia.
+      Cuando haya ingresado al apartado del perfil del creador, podra elegir la opcion de "Sucribir" y "Seguir", de este modo podra ver el contenido publicado que ofrezca su influencer o streamer favorito.</p>
+      <p class="card-text"><small class="text-muted">Icons</small></p>
+    </div>
+  </div>
+</div>
+
 </section>
 </div>
 

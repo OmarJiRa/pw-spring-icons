@@ -52,6 +52,6 @@ public class CreadorPostController {
 			System.err.println(e.getMessage());
 		}
 		//Devuelve la URL mapping
-		return "redirect:/pagina_creador";
+		return "redirect:/creadorpost";
 	}
 }
