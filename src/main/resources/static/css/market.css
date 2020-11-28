@@ -27,3 +27,34 @@
 	list-style: none;
 }
 
+#list-card {
+	padding-left: 0px;
+	display: flex;
+}
+#list-card li {
+	list-style: none;
+}
+.card {
+	margin: 10px;
+}
+
+.navbar-custom {
+    color: #231E1E;
+    background-color: #231E1E;
+    padding-bottom: 17px;
+    padding-top: 17px
+}
+
+#sidebar-container {
+	height: 100rem;
+	width: 200px;
+	
+}
+
+#sidebar-container .logo {
+	padding: 0.875rem 1.25rem;
+}
+
+#sidebar-container .menu {
+	width: 18rem;
+}

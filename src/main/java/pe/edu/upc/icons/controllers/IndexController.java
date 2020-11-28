@@ -23,5 +23,10 @@ public class IndexController {
 	public String layout() {
 		return "layout/layout";
 	}
+	
+	@GetMapping("login")
+	public String login() {
+		return "login";
+	}
 }
 

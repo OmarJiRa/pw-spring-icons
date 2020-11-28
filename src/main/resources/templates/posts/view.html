@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
 <meta charset="utf-8">
 <meta name="viewport"
@@ -16,36 +16,112 @@
 </head>
 <body class="bg-light">
 
-	<header th:replace="creadores/index :: header"></header>
+	<header th:fragment="header">
+
+		<nav class="navbar navbar-expand-lg navbar-custom">
+			<div class="container">
+
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<img th:src="@{/images/Frame1.svg}" width="150" height="60"
+						alt="Icons">
+
+				</div>
+
+				<div class="collapse navbar-collapse">
+					<form class="form-inline my-2 my-lg-0">
+						<input class="form-control mr-sm-2" type="search"
+							placeholder="Buscar..." aria-label="Buscar">
+						<button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+					</form>
+				</div>
+				<a href="/guiausuario" class="btn btn-warning" role="button"
+					aria-pressed="true"><i class="icon ion-md-help"></i></a>
+				<ul sec:authorize="isAuthenticated()" class="navbar-nav"
+					style="margin-left: 50px;">
+					<li class="nav-item dropdown"><a
+						class="btn btn-info dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> <i class="fas fa-user-circle"></i>
+							User: <span sec:authentication="name">Username</span>
+					</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" th:href="@{/perfil}"> <i
+								class="fas fa-id-card"></i> Ver mi perfil
+							</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" th:href="@{/logout}">Cerrar Sesión</a>
+						</div></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
 	<div class="d-flex" id="content-wrapper">
 		<div id="sidebar-container" class="bg-dark">
 
 			<div class="menu">
 				<a th:href="@{~/posts}" class="d-block text-light p-3 border-0"><i
 					class="icon ion-md-apps lead mr-2"></i> Publicaciones</a> <a
+					th:href="@{~/categorias}" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-filing lead mr-2"></i> Categorías</a><a
 					th:href="@{~/creadores}" class="d-block text-light p-3 border-0"><i
 					class="icon ion-md-paper lead mr-2"></i> Creadores</a><a
 					th:href="@{~/comunidades}" class="d-block text-light p-3 border-0"><i
 					class="icon ion-md-people lead mr-2"></i> Comunidades</a> <a
 					href="medios" class="d-block text-light p-3 border-0"><i
-					class="icon ion-md-card lead mr-2"></i> Medios de Pago</a> <a href="#"
-					class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-card lead mr-2"></i> Medios de Pago</a> <a
+					th:href="@{~/perfil}" class="d-block text-light p-3 border-0"><i
 					class="icon ion-md-person lead mr-2"></i> Perfil</a> <a href="#"
 					class="d-block text-light p-3 border-0"> <i
 					class="icon ion-md-settings lead mr-2"></i> Configuración
 				</a>
 			</div>
 		</div>
-		<div class="container text-center" style="margin-left: 50px; margin-right: 50px">
+
+		<div class="container text-center"
+			style="margin-left: 50px; margin-right: 50px">
 
 			&nbsp;
 			<h1>
-				<span th:text="${post.nombre}"></span>
+				<span style="text-align: left" th:text="${post.nombre}"></span>
 			</h1>
 			&nbsp;
-			<iframe width="950" height="600"
-				th:src="${post.link}"> </iframe>
+			<iframe width="950" height="600" th:src="${post.link}"> </iframe>
+			&nbsp;
+			<h5>
+				<span style="text-align: left;" th:text="${post.descripcion}"></span>
+			</h5>
 
+
+			<div class="card"
+				style="margin-top: 20px; width: 70%; margin-left: 180px;">
+				<h5 class="card-header">Comentarios</h5>
+				<div class="card-body">
+					<form th:action="@{/posts/comentar}+'-'+${post.id}" th:object="${comentarioC}" method="post">
+						<div class="form-group row">
+							<div class="col-sm-10">
+								<input placeholder="Dinos lo que piensas" type="text"
+									class="form-control" style="height: 40px;" th:field="*{comentario}">
+							</div>
+							<button type="submit" class="btn btn-primary mb-2">
+								<i class="fas fa-comment-alt"></i> Comentar
+							</button>
+
+						</div>
+					</form>
+
+					<ul id="list-posts">
+						<li th:each="usuarioPost : ${comentarios}"
+							style="margin-top: 20px; margin-bottom: 20px; text-align: left;">
+							<strong><span
+								th:text="${usuarioPost.usuario.nombresApellidos} + ' -'"> </span></strong><small
+							class="text-muted" th:text="' ' + ${usuarioPost.fechaComentario + ' / '}"></small><small
+							class="text-muted" th:text="' ' + ${usuarioPost.horaComentario}"></small><br>
+							<span th:text="${usuarioPost.comentario}"></span>
+
+						</li>
+					</ul>
+				</div>
+			</div>
 
 		</div>
 	</div>

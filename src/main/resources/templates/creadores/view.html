@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
 <meta charset="utf-8">
 <meta name="viewport"
@@ -16,20 +17,61 @@
 </head>
 <body class="bg-light">
 
-	<header th:replace="creadores/index :: header"></header>
+	<header th:fragment="header">
+
+		<nav class="navbar navbar-expand-lg navbar-custom">
+			<div class="container">
+
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<img th:src="@{/images/Frame1.svg}" width="150" height="60"
+						alt="Icons">
+
+				</div>
+
+				<div class="collapse navbar-collapse">
+					<form class="form-inline my-2 my-lg-0">
+						<input class="form-control mr-sm-2" type="search"
+							placeholder="Buscar..." aria-label="Buscar">
+						<button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+					</form>
+				</div>
+				<a href="/guiausuario" class="btn btn-warning" role="button"
+					aria-pressed="true"><i class="icon ion-md-help"></i></a>
+				<ul sec:authorize="isAuthenticated()" class="navbar-nav"
+					style="margin-left: 50px;">
+					<li class="nav-item dropdown"><a
+						class="btn btn-info dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> <i class="fas fa-user-circle"></i>
+							User: <span sec:authentication="name">Username</span>
+					</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" th:href="@{/perfil}"> <i
+								class="fas fa-id-card"></i> Ver mi perfil
+							</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" th:href="@{/logout}">Cerrar Sesión</a>
+						</div></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
 	<div class="d-flex" id="content-wrapper">
 		<div id="sidebar-container" class="bg-dark">
+			
 
 			<div class="menu">
 				<a th:href="@{~/posts}" class="d-block text-light p-3 border-0"><i
 					class="icon ion-md-apps lead mr-2"></i> Publicaciones</a> <a
+					th:href="@{~/categorias}" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-filing lead mr-2"></i> Categorías</a><a
 					th:href="@{~/creadores}" class="d-block text-light p-3 border-0"><i
 					class="icon ion-md-paper lead mr-2"></i> Creadores</a><a
 					th:href="@{~/comunidades}" class="d-block text-light p-3 border-0"><i
 					class="icon ion-md-people lead mr-2"></i> Comunidades</a> <a
 					href="medios" class="d-block text-light p-3 border-0"><i
-					class="icon ion-md-card lead mr-2"></i> Medios de Pago</a> <a href="#"
-					class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-card lead mr-2"></i> Medios de Pago</a> <a
+					th:href="@{~/perfil}" class="d-block text-light p-3 border-0"><i
 					class="icon ion-md-person lead mr-2"></i> Perfil</a> <a href="#"
 					class="d-block text-light p-3 border-0"> <i
 					class="icon ion-md-settings lead mr-2"></i> Configuración
@@ -52,9 +94,14 @@
 			<span th:text="${creador.categoria}"></span> &nbsp;
 			<div class="text-center" style="margin-top: 10px;">
 
-				<form th:action="@{/creadores/seguir}" th:object="${creador}" method="post"><button type="submit" class="btn btn-primary" style="width: 120px;">Seguir</button></form>
-				<form th:action="@{/creadores/suscripcion}" th:object="${creador}" method="post"><button type="submit" class="btn btn-success" style="width: 120px;">Suscribirse</button></form>
-				<a  th:href="@{'/creadores/estadisticas' + '-' + ${creador.id}}" class="btn btn-secondary" style="width: 120px;"> Estadisticas </a>
+				<button data-toggle="modal" data-target="#confirmationModalSEG"
+					class="btn btn-primary" style="width: 120px;">Seguir</button>
+
+				<button data-toggle="modal" data-target="#confirmationModalSUB"
+					class="btn btn-success" style="width: 120px;">Suscribirse</button>
+
+				<a th:href="@{'/creadores/estadisticas' + '-' + ${creador.id}}"
+					class="btn btn-secondary" style="width: 120px;"> Estadisticas </a>
 			</div>
 			<div style="margin-top: 40px;">
 				<ul id="list-posts">
@@ -92,6 +139,58 @@
 			</div>
 		</div>
 
+
+		<div class="modal fade" id="confirmationModalSUB" tabindex="-1"
+			aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Confirmación</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p>Estás a un paso de suscribirte a este creador.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Close</button>
+						<form th:action="@{/creadores/suscripcion}" th:object="${creador}"
+							method="post">
+							<button type="submit" class="btn btn-success">Suscribirse</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="confirmationModalSEG" tabindex="-1"
+			aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Confirmación</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p>Estás a un paso de seguir a este creador.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Close</button>
+						<form th:action="@{/creadores/seguir}" th:object="${creador}"
+							method="post">
+							<button type="submit" class="btn btn-primary">Seguir</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 
 	</div>
 

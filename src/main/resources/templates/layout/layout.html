@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
 <meta charset="utf-8">
 <meta name="viewport"
@@ -19,10 +19,11 @@
 	<header th:fragment="header">
 
 		<nav class="navbar navbar-expand-lg navbar-custom">
-			<div class="container ">
+			<div class="container">
 
 				<div class="collapse navbar-collapse" id="navbarNav">
-					<img src="images/Frame 1.svg" width="150" height="60" alt="Icons">
+					<img th:src="@{/images/Frame1.svg}" width="150" height="60"
+						alt="Icons">
 
 				</div>
 
@@ -33,15 +34,24 @@
 						<button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
 					</form>
 				</div>
-				<div>
-					<form class="">
-						<button type="submit" class="btn btn-warning">
-							<i class="icon ion-md-help"></i>
-						</button>
-						<button class="btn btn-danger my-2 my-sm-0" type="submit">Cerrar
-							sesión</button>
-					</form>
-				</div>
+				<a href="/guiausuario" class="btn btn-warning" role="button"
+					aria-pressed="true"><i class="icon ion-md-help"></i></a>
+				<ul sec:authorize="isAuthenticated()" class="navbar-nav"
+					style="margin-left: 50px;">
+					<li class="nav-item dropdown"><a
+						class="btn btn-info dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> <i class="fas fa-user-circle"></i>
+							User: <span sec:authentication="name">Username</span>
+					</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" th:href="@{/perfil}"> <i
+								class="fas fa-id-card"></i> Ver mi perfil
+							</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" th:href="@{/logout}">Cerrar Sesión</a>
+						</div></li>
+				</ul>
 			</div>
 		</nav>
 	</header>
@@ -56,8 +66,8 @@
 					th:href="@{~/comunidades}" class="d-block text-light p-3 border-0"><i
 					class="icon ion-md-people lead mr-2"></i> Comunidades</a> <a
 					href="medios" class="d-block text-light p-3 border-0"><i
-					class="icon ion-md-card lead mr-2"></i> Medios de Pago</a> <a href="#"
-					class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-card lead mr-2"></i> Medios de Pago</a> <a
+					th:href="@{~/perfil}" class="d-block text-light p-3 border-0"><i
 					class="icon ion-md-person lead mr-2"></i> Perfil</a> <a href="#"
 					class="d-block text-light p-3 border-0"> <i
 					class="icon ion-md-settings lead mr-2"></i> Configuración

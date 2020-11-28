@@ -15,15 +15,20 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import pe.edu.upc.icons.models.entities.Comunidad;
+import pe.edu.upc.icons.models.entities.ComunidadPost;
+import pe.edu.upc.icons.services.ComunidadPostService;
 import pe.edu.upc.icons.services.ComunidadService;
 
 @Controller
 @RequestMapping("/comunidades")
-@SessionAttributes("comunidad")
+@SessionAttributes("{comunidad, comunidadPost}")
 public class ComunidadController {
 	
 	@Autowired
 	private ComunidadService comunidadService;
+	
+	@Autowired
+	private ComunidadPostService comunidadPostService;
 	
 	//Para obtener data de la BD y enviarlo al Front
 	@GetMapping
@@ -57,22 +62,23 @@ public class ComunidadController {
 		return "redirect:/comunidades";
 	}
 	
-	@GetMapping("view-{id}")
+	/*@GetMapping("view-{id}")
 	public String view(@PathVariable("id") Integer id, Model model) {
 		try {
 			Optional<Comunidad> optional = comunidadService.findById(id);
 			if(optional.isPresent()) {
-				model.addAttribute("comunidad", optional.get());
-				return "comunidades/view";
-			}
+				List<ComunidadPost> comunidadPosts = comunidadPostService.findByComunidad(optional.get());
+				model.addAttribute("comunidadPosts", comunidadPosts);
+			} 
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
-		return "redirect:/comunidades";
-	}
+		return "redirect:/publicaciones";
+	}*/
 
 	// /publicaciones/delete
+	
 	@GetMapping("/eliminar/{id}")
 	public String delete(@PathVariable("id") Integer id, Model model) {
 		try {
@@ -105,5 +111,24 @@ public class ComunidadController {
 			System.err.println(e.getMessage());
 		}
 		return "/comunidades/view";
+	}
+	
+	@GetMapping("{id}")
+	public String viewComunidad(@ModelAttribute("comunidad") Comunidad comunidad,
+			@PathVariable("id") Integer id, Model model ) {
+        System.out.println(id);
+		try {
+			Optional<Comunidad> optional = comunidadService.findById(id);
+			List<ComunidadPost> comunidadPosts = comunidadPostService.findByComunidad(optional.get());
+			if (optional.isPresent()) {
+				model.addAttribute("comunidad", optional.get());
+				model.addAttribute("comunidadPosts", comunidadPosts);
+				return "comunidades/view-detalles";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+		}
+		return "redirect:/comunidades";
 	}
 }

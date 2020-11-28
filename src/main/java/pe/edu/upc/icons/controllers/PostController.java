@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +19,13 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import pe.edu.upc.icons.models.entities.Creador;
 import pe.edu.upc.icons.models.entities.Post;
+import pe.edu.upc.icons.models.entities.Usuario;
+import pe.edu.upc.icons.models.entities.UsuarioPost;
+import pe.edu.upc.icons.security.UsuarioDetails;
 import pe.edu.upc.icons.services.CreadorService;
 import pe.edu.upc.icons.services.PostService;
+import pe.edu.upc.icons.services.UsuarioPostService;
+import pe.edu.upc.icons.services.UsuarioService;
 
 @Controller
 @RequestMapping("/posts")
@@ -30,6 +37,12 @@ public class PostController {
 	
 	@Autowired
 	private CreadorService creadorService;
+	
+	@Autowired
+	private UsuarioPostService usuarioPostService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 	
 	public static Date getFechaActual() {
 	    Date ahora = new Date();
@@ -83,10 +96,15 @@ public class PostController {
 	
 	@GetMapping("view-{id}")
 	public String view(@PathVariable("id") Integer id, Model model) {
+		UsuarioPost comentario = new UsuarioPost();
 		try {
 			Optional<Post> optional = postService.findById(id);
+			List<UsuarioPost> comentarios = usuarioPostService.findByPost(optional.get());
+			
 			if(optional.isPresent()) {
 				model.addAttribute("post", optional.get());
+				model.addAttribute("comentarios", comentarios);
+				model.addAttribute("comentarioC", comentario);
 				return "posts/view";
 			} 
 		} catch (Exception e) {
@@ -94,5 +112,28 @@ public class PostController {
 			System.err.println(e.getMessage());
 		}
 		return "redirect:/posts";		
+	}
+	
+	@PostMapping("comentar-{id}")
+	public String saveComentario(@ModelAttribute("comentarioC") UsuarioPost comentarioC, @PathVariable("id") Integer id, SessionStatus status) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UsuarioDetails usuarioDetails = (UsuarioDetails) authentication.getPrincipal();
+		try {
+			Optional<Usuario> optional = usuarioService.findById(usuarioDetails.getIdSegmento());
+			Optional<Post> post = postService.findById(id);
+			comentarioC.setPost(post.get());
+			comentarioC.setUsuario(optional.get());
+			comentarioC.setFechaComentario(getFechaActual());
+			comentarioC.setHoraComentario(getHoraActual());
+			comentarioC.setMeGusta(false);
+
+			usuarioPostService.save(comentarioC);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+		}
+		// Devuelve la URL mapping
+		return "redirect:/posts/view-{id}";
 	}
 }

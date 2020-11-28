@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pe.edu.upc.icons.models.entities.Categoria;
 import pe.edu.upc.icons.models.entities.Creador;
 import pe.edu.upc.icons.models.entities.Post;
 import pe.edu.upc.icons.models.repositories.PostRepository;
@@ -59,14 +60,22 @@ public class PostServiceImpl implements PostService, Serializable {
 		return postRepository.findByNombreContaining(nombre);
 	}
 
+	@Transactional(readOnly = true)
 	@Override
 	public List<Post> findByExclusivo(Boolean exclusivo) throws Exception {
 		return postRepository.findByExclusivo(exclusivo);
 	}
 
+	@Transactional(readOnly = true)
 	@Override
 	public List<Post> findByCreador(Creador creador) throws Exception {
 		return postRepository.findByCreador(creador);
+	}
+
+	@Transactional(readOnly = true)
+	@Override
+	public List<Post> findByCategoria(Categoria categoria) throws Exception {
+		return postRepository.findByCategoria(categoria);
 	}
 
 }

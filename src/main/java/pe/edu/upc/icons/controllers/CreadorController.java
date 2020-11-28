@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import pe.edu.upc.icons.models.entities.Creador;
 import pe.edu.upc.icons.models.entities.Post;
+import pe.edu.upc.icons.models.entities.Usuario;
+import pe.edu.upc.icons.security.UsuarioDetails;
 import pe.edu.upc.icons.services.CreadorService;
 import pe.edu.upc.icons.services.PostService;
 import pe.edu.upc.icons.services.UsuarioService;
@@ -70,9 +74,13 @@ public class CreadorController {
 
 	@PostMapping("seguir")
 	public String seguir(@ModelAttribute("creador") Creador creador, SessionStatus status) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UsuarioDetails usuarioDetails = (UsuarioDetails) authentication.getPrincipal();
+		
 		try {
+			Optional<Usuario> optional = usuarioService.findById(usuarioDetails.getIdSegmento());
 			System.out.println("EL id es: " + creador.getId());
-			usuarioService.setSeguimiento(1, creador.getId());
+			usuarioService.setSeguimiento(optional.get().getId(), creador.getId());
 			status.setComplete();
 
 		} catch (Exception e) {
@@ -85,9 +93,12 @@ public class CreadorController {
 
 	@PostMapping("suscripcion")
 	public String suscripcion(@ModelAttribute("creador") Creador creador, SessionStatus status) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UsuarioDetails usuarioDetails = (UsuarioDetails) authentication.getPrincipal();
 		try {
+			Optional<Usuario> optional = usuarioService.findById(usuarioDetails.getIdSegmento());
 			System.out.println("EL id es: " + creador.getId());
-			usuarioService.setSuscripcion(3, creador.getId());
+			usuarioService.setSeguimiento(optional.get().getId(), creador.getId());	
 			status.setComplete();
 
 		} catch (Exception e) {
@@ -100,7 +111,7 @@ public class CreadorController {
 	
 	@GetMapping("estadisticas-{id}")
 	public String estadisticas(@PathVariable("id") Integer id, Model model) {
-		
+			
 		try {
 			Integer reporteComentario = creadorService.numeroComentarios(id);
 			Integer reporteMeGusta = creadorService.numeroMeGusta(id);

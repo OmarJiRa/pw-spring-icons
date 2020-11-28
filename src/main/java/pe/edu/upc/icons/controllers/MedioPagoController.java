@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -46,8 +45,6 @@ public class MedioPagoController {
 		return "/medios/inicio";
 	}
 	
-	
-	
 	@PostMapping("save")
 	public String save(@ModelAttribute("medio") MedioPago medio, SessionStatus status) {
 		try {
@@ -61,19 +58,5 @@ public class MedioPagoController {
 		}
 		return "redirect:/medios";
 	}
-	
-	@GetMapping("view-{id}")
-	public String view(@PathVariable("id") Integer id, Model model) {
-		try {
-			Optional<MedioPago> optional = medioPagoService.findById(id);
-			if(optional.isPresent()) {
-				model.addAttribute("medio", optional.get());
-				return "medios/view";
-			} 
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.err.println(e.getMessage());
-		}
-		return "redirect:/medios";		
-	}
+
 }

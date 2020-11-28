@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+<body class="bg-light">
+
+	<header th:fragment="header">
+
+		<nav class="navbar navbar-expand-lg navbar-custom">
+			<div class="container">
+
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<img th:src="@{/images/Frame1.svg}" width="150" height="60"
+						alt="Icons">
+
+				</div>
+
+				<div class="collapse navbar-collapse">
+					<form class="form-inline my-2 my-lg-0">
+						<input class="form-control mr-sm-2" type="search"
+							placeholder="Buscar..." aria-label="Buscar">
+						<button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+					</form>
+				</div>
+				<a href="/guiausuario" class="btn btn-warning" role="button"
+					aria-pressed="true"><i class="icon ion-md-help"></i></a>
+				<ul sec:authorize="isAuthenticated()" class="navbar-nav"
+					style="margin-left: 50px;">
+					<li class="nav-item dropdown"><a
+						class="btn btn-info dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> <i class="fas fa-user-circle"></i>
+							User: <span sec:authentication="name">Username</span>
+					</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" th:href="@{/perfil}"> <i
+								class="fas fa-id-card"></i> Ver mi perfil
+							</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" th:href="@{/logout}">Cerrar Sesión</a>
+						</div></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	
+	<div class="d-flex" id="content-wrapper">
+	
+		<div id="sidebar-container" class="bg-dark">
+
+			<div class="menu">
+				<a th:href="@{~/posts}" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-apps lead mr-2"></i> Publicaciones</a> <a
+					th:href="@{~/categorias}" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-filing lead mr-2"></i> Categorías</a><a
+					th:href="@{~/creadores}" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-paper lead mr-2"></i> Creadores</a><a
+					th:href="@{~/comunidades}" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-people lead mr-2"></i> Comunidades</a> <a
+					href="medios" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-card lead mr-2"></i> Medios de Pago</a> <a
+					th:href="@{~/perfil}" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-person lead mr-2"></i> Perfil</a> <a href="#"
+					class="d-block text-light p-3 border-0"> <i
+					class="icon ion-md-settings lead mr-2"></i> Configuración
+				</a>
+			</div>
+		</div>
+	
+	<div class="container-fluid">
+
+	<nav aria-label="breadcrumb">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item">Home</li>
+	    <li class="breadcrumb-item"><span th:text="Comunidad"></span></li>
+	    <li class="breadcrumb-item"><span th:text="Publicaciones"></span></li>
+	    <li class="breadcrumb-item active" aria-current="page"><span th:text="${comunidadPostDetalle.nombre}"></span></li>
+	  </ol>
+	</nav>
+	
+	<div id="view-card">
+		<div >
+			<img id="view-image" th:src="@{${comunidadPostDetalle.urlImage}}" class="img-fluid" alt="Responsive image">
+		</div>
+		<div class="card text-white bg-dark mb-3">
+		  <div class="card-header">
+		    <span class="text-center" th:text="${comunidadPostDetalle.nombre}"></span>
+		  </div>
+		  <div class="card-body">
+		    <!--<h5 class="card-title title-center"><span class="text-center " th:text="${comunidadPostDetalle.descripcion}"></span></h5>-->
+		    <h5 class="card-text text-center" th:text="${comunidadPostDetalle.descripcion}"></h5>
+		    <p class="card-text text-right" th:text="${comunidadPostDetalle.creador}"></p>
+		    <p class="card-text text-right" th:text="${comunidadPostDetalle.fechaCreacion}"></p>
+		  </div>
+		</div>
+	</div>
+
+	</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+<link rel="stylesheet" th:href="@{/css/solid.min.css}">
+<link rel="stylesheet" th:href="@{/css/market.css}">
+<link
+	href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css"
+	rel="stylesheet">
+
+<title>Perfil de creador</title>
+</head>
+<body class="bg-light">
+
+	<header th:fragment="header">
+
+		<nav class="navbar navbar-expand-lg navbar-custom">
+			<div class="container">
+
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<img th:src="@{/images/Frame1.svg}" width="150" height="60"
+						alt="Icons">
+
+				</div>
+
+				<div class="collapse navbar-collapse">
+					<form class="form-inline my-2 my-lg-0">
+						<input class="form-control mr-sm-2" type="search"
+							placeholder="Buscar..." aria-label="Buscar">
+						<button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+					</form>
+				</div>
+				<a href="/guiausuario" class="btn btn-warning" role="button"
+					aria-pressed="true"><i class="icon ion-md-help"></i></a>
+				<ul sec:authorize="isAuthenticated()" class="navbar-nav"
+					style="margin-left: 50px;">
+					<li class="nav-item dropdown"><a
+						class="btn btn-info dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> <i class="fas fa-user-circle"></i>
+							User: <span sec:authentication="name">Username</span>
+					</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" th:href="@{/perfil}"> <i
+								class="fas fa-id-card"></i> Ver mi perfil
+							</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" th:href="@{/logout}">Cerrar Sesión</a>
+						</div></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<div class="d-flex" id="content-wrapper">
+		<div id="sidebar-container" class="bg-dark">
+			
+
+			<div class="menu">
+				<a th:href="@{~/posts}" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-apps lead mr-2"></i> Publicaciones</a> <a
+					th:href="@{~/categorias}" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-filing lead mr-2"></i> Categorías</a><a
+					th:href="@{~/creadores}" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-paper lead mr-2"></i> Creadores</a><a
+					th:href="@{~/comunidades}" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-people lead mr-2"></i> Comunidades</a> <a
+					href="medios" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-card lead mr-2"></i> Medios de Pago</a> <a
+					th:href="@{~/perfil}" class="d-block text-light p-3 border-0"><i
+					class="icon ion-md-person lead mr-2"></i> Perfil</a> <a href="#"
+					class="d-block text-light p-3 border-0"> <i
+					class="icon ion-md-settings lead mr-2"></i> Configuración
+				</a>
+			</div>
+		</div>
+		<div class="container text-center"
+			style="margin-left: 50px; margin-right: 50px">
+				
+				<ul id="list-posts">
+				<li th:each="post : ${posts}">
+
+					<div class="card mb-3" style="max-width: 1200px; list-style: none;">
+						<div class="row no-gutters">
+							<div class="col-md-3">
+								<img th:src="${post.thumbnail}" class="card-responsive"
+									style="width: 250px;">
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<p class="card-text">
+										<small class="text-muted" th:text="${post.fechaPublicacion}"></small>
+									</p>
+									<h5 class="card-title" th:text="${post.nombre}"></h5>
+									<p class="card-text" th:text="${post.descripcion}"></p>
+
+									<h5 class="card-text">
+										<small class="card-text"
+											th:text="'Created by ' + ${post.creador.getNombresApellidos()}"></small>
+										&nbsp;
+									</h5>
+									<a th:href="@{'/posts/view-' + ${post.id}}"
+										class="btn btn-primary text-right">Ver más</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</li>
+			</ul>
+			
+		</div>
+
+	</div>
+
+	<footer th:fragment="footer">
+
+		<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+		<script th:src="@{/js/popper.min.js}"></script>
+		<script th:src="@{/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/chosen.jquery.min.js}"></script>
+		<script th:src="@{/js/fontawesome.min.js}"></script>
+		<script th:src="@{/js/sweetalert.min.js}"></script>
+	</footer>
+
+</body>
+</html>

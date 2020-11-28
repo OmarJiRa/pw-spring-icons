@@ -1,4 +1,4 @@
-	package pe.edu.upc.icons.models.entities;
+package pe.edu.upc.icons.models.entities;
 
 import java.util.Date;
 import java.util.List;
@@ -34,19 +34,22 @@ public class Comunidad {
 	@Temporal(TemporalType.DATE)
 	private Date fechaCreacion;
 	
+	@Column(name = "url_image", length = 100)
+	private String urlImage;
+	
+	public String getUrlImage() {
+		return urlImage;
+	}
+
+	public void setUrlImage(String urlImage) {
+		this.urlImage = urlImage;
+	}
+
 	@OneToMany(mappedBy = "comunidad")
 	private List<ComunidadUsuario> comunidadUsuarios;
 	
 	@OneToMany(mappedBy = "comunidad")
 	private List<ComunidadPost> comunidadPosts;
-
-	public List<ComunidadPost> getComunidadPosts() {
-		return comunidadPosts;
-	}
-
-	public void setComunidadPosts(List<ComunidadPost> comunidadPosts) {
-		this.comunidadPosts = comunidadPosts;
-	}
 
 	public Integer getId() {
 		return id;
@@ -95,5 +98,12 @@ public class Comunidad {
 	public void setComunidadUsuarios(List<ComunidadUsuario> comunidadUsuarios) {
 		this.comunidadUsuarios = comunidadUsuarios;
 	}
-	
+
+	public List<ComunidadPost> getComunidadPosts() {
+		return comunidadPosts;
+	}
+
+	public void setComunidadPosts(List<ComunidadPost> comunidadPosts) {
+		this.comunidadPosts = comunidadPosts;
+	}
 }
