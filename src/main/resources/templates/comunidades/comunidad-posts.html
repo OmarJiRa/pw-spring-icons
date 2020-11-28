@@ -3,10 +3,10 @@
 <head th:replace="layout/layout :: head"></head>
 <body class="bg-light">
 
-	<nav class="navbar navbar-expand-lg navbar-custom">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="#"> <img
-			th:src="@{/images/IconsLogo.svg}" width="150" height="60"
-			class="d-inline-block align-top" alt="" loading="lazy">
+			th:src="@{/images/IconsLogo.png}" width="30" height="30"
+			class="d-inline-block align-top" alt="" loading="lazy"> Icons
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarTogglerDemo02"
@@ -42,7 +42,7 @@
 	<div id="sidebar-container" class="bg-dark">
 
 			<div class="menu">
-				<a  th:href="@{~/publicaciones}" class="d-block text-light p-3 border-0"><i
+				<a th:href="@{~/publicaciones}" class="d-block text-light p-3 border-0"><i
 					class="icon ion-md-apps lead mr-2"></i> Publicaciones</a> <a
 					href="creadores" class="d-block text-light p-3 border-0"><i
 					class="icon ion-md-paper lead mr-2"></i> Creadores</a><a
@@ -64,7 +64,7 @@
 
 	    	<!-- Crear un formulario, ingresar data y enviarlo al controller -->
 		<span th:text="'Registrar Publicacion: '"></span>
-		<form th:action="@{/publicaciones/save}" th:object="${comunidadPost}"
+		<form th:action="@{/comunidadDetalles/save}" th:object="${comunidadDetalle}"
 			method="post">
 			<div class="row">
 				<div class="col">
@@ -90,22 +90,22 @@
 			</button></p>
 		</form>
 		
-		<ul id="list-card" style="flex-flow: row wrap">
-			<li th:each="comunidadPost : ${publicaciones}"> 
+		<ul id="list-card">
+			<li th:each="comunidadDetalle : ${comunidad.comunidadDetalles}"> 
 			<div class="card" style="width: 18rem;">
-			<img id="view-image" th:src="@{${comunidadPost.urlImage}}" class="img-thumbnail">
+			<img id="view-image" th:src="@{${comunidadDetalle.comunidadPost.urlImage}}" class="img-thumbnail">
 
 				  <div class="card-body">
 				    <h5 class="card-title"> 
-				    	<a th:href="@{'/publicaciones/' + ${comunidadPost.tag} + '-' + ${comunidadPost.id} + '/p}" 
+				    	<a th:href="@{'/comunidadDetalles/' + ${comunidadDetalle.tag} + '-' + ${comunidaddetalle.id} + '/p}" 
 					    	class="card-link">
-					    	<span th:text="${comunidadPost.nombre}"></span> 
+					    	<span th:text="${comunidadDetalle.comunidadPost.nombre}"></span> 
 					    </a>				    	
 				    </h5>
-				    <p class="card-text" th:text="${comunidadPost.creador}"></p>
-				    <p class="card-text" th:text="${comunidadPost.fechaCreacion}"></p>
-						<a th:href="@{'/publicaciones/' + ${comunidadPost.tag} + '-' + ${comunidadPost.id} + '/p'}"
-						   class="card-link">Ver detalle de la publciación</a>
+				    <p class="card-text" th:text="${comunidadDetalle.comunidadPost.creador}"></p>
+				    <p class="card-text" th:text="${comunidadDetalle.comunidadPost.fechaCreacion}"></p>
+						<!--<a th:href="@{'/publicaciones/' + ${comunidadPost.tag} + '-' + ${comunidadPost.id} + '/p'}"
+						   class="card-link">Ver detalle de la publicación</a>
 						   <p></p>
 					<span class="text-center"><a th:href="@{'/publicaciones/view-' + ${comunidadPost.id}}"> </a> 
 					<a th:href="@{/publicaciones/editar/}+${comunidadPost.id}" class="btn btn-warning"><i class="fas fa-edit"></i>Editar </a></span>
@@ -113,7 +113,7 @@
 					<p></p>
 					<span class="text-center"><a th:href="@{'/publicaciones/' + ${comunidadPost.tag} + '-' + ${comunidadPost.id} + '/p'}" class="btn btn-info">Ver Detalles</a></span>
 					<p></p>
-					<span class="text-center"><a th:href="@{'/publicaciones/view-' + ${comunidadPost.id}}" class="btn btn-secondary">Ver Comentarios</a></span>
+					<span class="text-center"><a th:href="@{'/publicaciones/view-' + ${comunidadPost.id}}" class="btn btn-secondary">Ver Comentarios</a></span>-->
 				  </div>
 				  </div>
 			</li>

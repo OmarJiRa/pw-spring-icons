@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pe.edu.upc.icons.models.entities.Comunidad;
 import pe.edu.upc.icons.models.entities.ComunidadPost;
 import pe.edu.upc.icons.models.repositories.ComunidadPostRepository;
 import pe.edu.upc.icons.services.ComunidadPostService;
@@ -60,5 +61,10 @@ public class ComunidadPostServiceImpl implements ComunidadPostService, Serializa
 	@Override
 	public List<ComunidadPost> findByDescripcion(String descripcion) throws Exception {
 		return comunidadPostRepository.findByDescripcionContaining(descripcion);
+	}
+
+	@Override
+	public List<ComunidadPost> findByComunidad(Comunidad comunidad) throws Exception {
+		return comunidadPostRepository.findByComunidad(comunidad);
 	}
 }

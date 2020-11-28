@@ -1,0 +1,15 @@
+package pe.edu.upc.icons.models.repositories;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import pe.edu.upc.icons.models.entities.ComunidadDetalle;
+import pe.edu.upc.icons.models.entities.ComunidadPost;
+
+@Repository
+public interface ComunidadDetalleRepository extends JpaRepository<ComunidadDetalle, Integer> {
+	List<ComunidadDetalle> findByNombreContaining(String nombre) throws Exception;
+	List<ComunidadDetalle> findByDescripcionContaining(String descripcion) throws Exception;
+}

@@ -181,8 +181,5 @@ public class Post {
 
 	public void setCreadorId(Integer creadorId) {
 		this.creadorId = creadorId;
-	}
-	
-	
-	
+	}	
 }

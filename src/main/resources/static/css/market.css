@@ -16,3 +16,10 @@
 #view-image {
 	border-radius: 10px;
 }
+
+.navbar-custom {
+    color: #231E1E;
+    background-color: #231E1E;
+    padding-bottom: 17px;
+    padding-top: 17px
+}

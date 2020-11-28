@@ -21,11 +21,13 @@ import pe.edu.upc.icons.services.ComunidadService;
 
 @Controller
 @RequestMapping("/comunidades")
-@SessionAttributes("comunidad")
+@SessionAttributes("{comunidad, comunidadPost}")
 public class ComunidadController {
 	
 	@Autowired
 	private ComunidadService comunidadService;
+	
+	@Autowired
 	private ComunidadPostService comunidadPostService;
 	
 	//Para obtener data de la BD y enviarlo al Front
@@ -60,20 +62,20 @@ public class ComunidadController {
 		return "redirect:/comunidades";
 	}
 	
-	@GetMapping("view-{id}")
+	/*@GetMapping("view-{id}")
 	public String view(@PathVariable("id") Integer id, Model model) {
 		try {
-			Optional<ComunidadPost> optional = comunidadPostService.findById(id);
+			Optional<Comunidad> optional = comunidadService.findById(id);
 			if(optional.isPresent()) {
-				model.addAttribute("comunidadPost", optional.get());
-				return "publicaciones/iniciop";
+				List<ComunidadPost> comunidadPosts = comunidadPostService.findByComunidad(optional.get());
+				model.addAttribute("comunidadPosts", comunidadPosts);
 			} 
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println(e.getMessage());
 		}
 		return "redirect:/publicaciones";
-	}
+	}*/
 
 	// /publicaciones/delete
 	@GetMapping("/eliminar/{id}")
@@ -113,17 +115,18 @@ public class ComunidadController {
 	@GetMapping("{id}")
 	public String viewComunidad(@ModelAttribute("comunidad") Comunidad comunidad,
 			@PathVariable("id") Integer id, Model model ) {
-
+        System.out.println(id);
 		try {
 			Optional<Comunidad> optional = comunidadService.findById(id);
-			if(optional.isPresent()) {		
-				model.addAttribute("comunidad", comunidad);	// Search
-				model.addAttribute("comunidadDetalle", optional.get());
-				return "/comunidades/view-detalles";
+			List<ComunidadPost> comunidadPosts = comunidadPostService.findByComunidad(optional.get());
+			if (optional.isPresent()) {
+				model.addAttribute("comunidad", optional.get());
+				model.addAttribute("comunidadPosts", comunidadPosts);
+				return "comunidades/view-detalles";
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.err.println(e.getMessage());
 		}
 		return "redirect:/comunidades";
 	}
